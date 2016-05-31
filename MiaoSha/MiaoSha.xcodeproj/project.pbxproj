@@ -59,6 +59,8 @@
 		D5AE28FF1CDCD7CA003DD3AF /* LCFInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE28F81CDCD7CA003DD3AF /* LCFInfiniteScrollView.m */; };
 		D5AE29001CDCD7CA003DD3AF /* LCFInfiniteScrollViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE28FA1CDCD7CA003DD3AF /* LCFInfiniteScrollViewItem.m */; };
 		D5AE29011CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE28FC1CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m */; };
+		D5B2CB5F1CF493B4001B40A2 /* UITableViewCell+addLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CB5E1CF493B4001B40A2 /* UITableViewCell+addLine.m */; };
+		D5B2CB6D1CF4944A001B40A2 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CB6C1CF4944A001B40A2 /* MeCell.m */; };
 		E335179A61DC780974A5BD0F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197414077115ADF3496C59B6 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +166,10 @@
 		D5AE28FA1CDCD7CA003DD3AF /* LCFInfiniteScrollViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCFInfiniteScrollViewItem.m; sourceTree = "<group>"; };
 		D5AE28FB1CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LCFImageAdditions.h"; sourceTree = "<group>"; };
 		D5AE28FC1CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LCFImageAdditions.m"; sourceTree = "<group>"; };
+		D5B2CB5D1CF493B4001B40A2 /* UITableViewCell+addLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+addLine.h"; sourceTree = "<group>"; };
+		D5B2CB5E1CF493B4001B40A2 /* UITableViewCell+addLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+addLine.m"; sourceTree = "<group>"; };
+		D5B2CB6B1CF4944A001B40A2 /* MeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCell.h; sourceTree = "<group>"; };
+		D5B2CB6C1CF4944A001B40A2 /* MeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,9 +386,9 @@
 		D5AE27451CDC9AE0003DD3AF /* Me(我) */ = {
 			isa = PBXGroup;
 			children = (
+				D5B2CB691CF49421001B40A2 /* M */,
+				D5B2CB6A1CF49421001B40A2 /* V */,
 				D5AE27461CDC9AE0003DD3AF /* C */,
-				D5AE27491CDC9AE0003DD3AF /* M */,
-				D5AE274A1CDC9AE0003DD3AF /* V */,
 			);
 			path = "Me(我)";
 			sourceTree = "<group>";
@@ -394,20 +400,6 @@
 				D5AE27481CDC9AE0003DD3AF /* MeVC.m */,
 			);
 			path = C;
-			sourceTree = "<group>";
-		};
-		D5AE27491CDC9AE0003DD3AF /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
-			sourceTree = "<group>";
-		};
-		D5AE274A1CDC9AE0003DD3AF /* V */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = V;
 			sourceTree = "<group>";
 		};
 		D5AE27771CDC9AE0003DD3AF /* Resource */ = {
@@ -502,6 +494,8 @@
 		D5AE28571CDC9AE1003DD3AF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				D5B2CB5D1CF493B4001B40A2 /* UITableViewCell+addLine.h */,
+				D5B2CB5E1CF493B4001B40A2 /* UITableViewCell+addLine.m */,
 				D5AE28581CDC9AE1003DD3AF /* NSDate+LQCategory.h */,
 				D5AE28591CDC9AE1003DD3AF /* NSDate+LQCategory.m */,
 				D5AE285A1CDC9AE1003DD3AF /* UIAlertView+LQAlertView.h */,
@@ -677,6 +671,22 @@
 			path = LCFInfiniteScrollView;
 			sourceTree = "<group>";
 		};
+		D5B2CB691CF49421001B40A2 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		D5B2CB6A1CF49421001B40A2 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				D5B2CB6B1CF4944A001B40A2 /* MeCell.h */,
+				D5B2CB6C1CF4944A001B40A2 /* MeCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -829,6 +839,7 @@
 				D5AE28771CDC9AE1003DD3AF /* ModelFieldError.m in Sources */,
 				D5AE28BB1CDC9AE1003DD3AF /* TYAttributedLabel.m in Sources */,
 				D5AE28C01CDC9AE1003DD3AF /* TYTextContainer+Extended.m in Sources */,
+				D5B2CB5F1CF493B4001B40A2 /* UITableViewCell+addLine.m in Sources */,
 				D5AE28FE1CDCD7CA003DD3AF /* LCFCollectionViewFlowLayout.m in Sources */,
 				D5AE28751CDC9AE1003DD3AF /* MainBaseViewController.m in Sources */,
 				D5AE28A61CDC9AE1003DD3AF /* LCProgressHUD.m in Sources */,
@@ -837,6 +848,7 @@
 				D5AE28701CDC9AE1003DD3AF /* AppDelegate.m in Sources */,
 				D5AE287C1CDC9AE1003DD3AF /* MeVC.m in Sources */,
 				D5AE28741CDC9AE1003DD3AF /* ChildBaseViewController.m in Sources */,
+				D5B2CB6D1CF4944A001B40A2 /* MeCell.m in Sources */,
 				D5AE28C31CDC9AE1003DD3AF /* TYViewStorage.m in Sources */,
 				D5AE28FD1CDCD7CA003DD3AF /* LCFCollectionViewCell.m in Sources */,
 				D5AE28BE1CDC9AE1003DD3AF /* TYImageStorage.m in Sources */,
@@ -970,7 +982,7 @@
 					"$(PROJECT_DIR)/MiaoSha/ThirdClass/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/MiaoSha/ThirdClass/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = "/Users/liqiang/Documents/我的项目/秒杀/MiaoSha/MiaoSha/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/liqiang/Documents/文件/我的项目/分秒必争/MiaoSha/MiaoSha/PrefixHeader.pch";
 				INFOPLIST_FILE = MiaoSha/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1000,7 +1012,7 @@
 					"$(PROJECT_DIR)/MiaoSha/ThirdClass/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/MiaoSha/ThirdClass/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = "/Users/liqiang/Documents/我的项目/秒杀/MiaoSha/MiaoSha/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/liqiang/Documents/文件/我的项目/分秒必争/MiaoSha/MiaoSha/PrefixHeader.pch";
 				INFOPLIST_FILE = MiaoSha/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -10,7 +10,7 @@
 #import "LCFInfiniteScrollView.h"
 #import "UIColor+LCFImageAdditions.h"
 
-@interface HomePageVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface HomePageVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) LCFInfiniteScrollView *infiniteScrollView;
@@ -40,28 +40,22 @@
 
 - (void)drawView
 {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStyleGrouped];
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+//    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStyleGrouped];
+//    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    tableView.delegate = self;
+//    tableView.dataSource = self;
+//    [self.view addSubview:tableView];
+//    self.tableView = tableView;
     
-//    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-//    layout.itemSize = CGSizeMake(100 , 100);
-//    layout.minimumLineSpacing = 15;
-//    layout.minimumInteritemSpacing = 15 * 0.5;
-//    [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-//    
-//    UICollectionView *photoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:layout];
-//    [photoCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
-//    photoCollectionView.backgroundColor = [UIColor whiteColor];
-//    photoCollectionView.delaysContentTouches = NO;
-//    photoCollectionView.dataSource = self;
-//    photoCollectionView.delegate = self;
-//    [self.view addSubview:photoCollectionView];
-//    
-//    photoCollectionView.coll = [self drawHeaderView];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    
+    UICollectionView *photoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:layout];
+    [photoCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+    photoCollectionView.backgroundColor = [UIColor whiteColor];
+    photoCollectionView.delaysContentTouches = NO;
+    photoCollectionView.dataSource = self;
+    photoCollectionView.delegate = self;
+    [self.view addSubview:photoCollectionView];
 }
 
 - (UIView *)drawHeaderView
@@ -102,6 +96,48 @@
 
 }
 
+#pragma mark -
+#pragma mark ================= ICollectionViewDelegate,UICollectionViewDataSource =================
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 3;
+    }
+    
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [UICollectionViewCell new];
+}
+
+
+//定义并返回每个headerView或footerView
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//}
+
+
+//每一个cell的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        return CGSizeMake((ScreenWidth - 2)/3, (ScreenWidth - 2)/3);
+    }
+    else
+    {
+        return CGSizeMake((ScreenWidth - 1)/2, (ScreenWidth - 1)/2);
+    }
+}
 
 #pragma mark -
 #pragma mark ================= 网络 =================

@@ -50,5 +50,6 @@
 
 #import "UIAlertView+LQAlertView.h"
 #import "NSDate+LQCategory.h"
+#import "UITableViewCell+addLine.h"
 
 #endif
