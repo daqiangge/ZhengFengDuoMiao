@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D54914321D00809F00676BE3 /* Me.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54914311D00809F00676BE3 /* Me.xcassets */; };
+		D54914341D008B1D00676BE3 /* 排行榜.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54914331D008B1D00676BE3 /* 排行榜.xcassets */; };
+		D549143A1D008C7C00676BE3 /* RankingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D54914391D008C7C00676BE3 /* RankingListCell.m */; };
 		D5AE27021CDC9A32003DD3AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE27011CDC9A32003DD3AF /* main.m */; };
 		D5AE270B1CDC9A32003DD3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5AE27091CDC9A32003DD3AF /* Main.storyboard */; };
 		D5AE270E1CDC9A32003DD3AF /* MiaoSha.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5AE270C1CDC9A32003DD3AF /* MiaoSha.xcdatamodeld */; };
@@ -24,8 +27,7 @@
 		D5AE287A1CDC9AE1003DD3AF /* ModelMemberAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE27411CDC9AE0003DD3AF /* ModelMemberAccount.m */; };
 		D5AE287C1CDC9AE1003DD3AF /* MeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE27481CDC9AE0003DD3AF /* MeVC.m */; };
 		D5AE288F1CDC9AE1003DD3AF /* Community.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE27791CDC9AE0003DD3AF /* Community.xcassets */; };
-		D5AE28901CDC9AE1003DD3AF /* HomePage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE277A1CDC9AE0003DD3AF /* HomePage.xcassets */; };
-		D5AE28911CDC9AE1003DD3AF /* Me.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE277B1CDC9AE0003DD3AF /* Me.xcassets */; };
+		D5AE28901CDC9AE1003DD3AF /* 首页.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE277A1CDC9AE0003DD3AF /* 首页.xcassets */; };
 		D5AE28921CDC9AE1003DD3AF /* Other.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE277C1CDC9AE0003DD3AF /* Other.xcassets */; };
 		D5AE28A31CDC9AE1003DD3AF /* LCActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5AE27E81CDC9AE0003DD3AF /* LCActionSheet.bundle */; };
 		D5AE28A41CDC9AE1003DD3AF /* LCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE27EA1CDC9AE0003DD3AF /* LCActionSheet.m */; };
@@ -68,6 +70,10 @@
 		197414077115ADF3496C59B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE1EAEEB2C73F9CEAE3E760 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AAF0BDE8754FA958448625E1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D54914311D00809F00676BE3 /* Me.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Me.xcassets; sourceTree = "<group>"; };
+		D54914331D008B1D00676BE3 /* 排行榜.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "排行榜.xcassets"; sourceTree = "<group>"; };
+		D54914381D008C7C00676BE3 /* RankingListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingListCell.h; sourceTree = "<group>"; };
+		D54914391D008C7C00676BE3 /* RankingListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListCell.m; sourceTree = "<group>"; };
 		D5AE26FD1CDC9A32003DD3AF /* MiaoSha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiaoSha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5AE27011CDC9A32003DD3AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D5AE270A1CDC9A32003DD3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,8 +104,7 @@
 		D5AE27471CDC9AE0003DD3AF /* MeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeVC.h; sourceTree = "<group>"; };
 		D5AE27481CDC9AE0003DD3AF /* MeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeVC.m; sourceTree = "<group>"; };
 		D5AE27791CDC9AE0003DD3AF /* Community.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Community.xcassets; sourceTree = "<group>"; };
-		D5AE277A1CDC9AE0003DD3AF /* HomePage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomePage.xcassets; sourceTree = "<group>"; };
-		D5AE277B1CDC9AE0003DD3AF /* Me.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Me.xcassets; sourceTree = "<group>"; };
+		D5AE277A1CDC9AE0003DD3AF /* 首页.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "首页.xcassets"; sourceTree = "<group>"; };
 		D5AE277C1CDC9AE0003DD3AF /* Other.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Other.xcassets; sourceTree = "<group>"; };
 		D5AE27E81CDC9AE0003DD3AF /* LCActionSheet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LCActionSheet.bundle; sourceTree = "<group>"; };
 		D5AE27E91CDC9AE0003DD3AF /* LCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCActionSheet.h; sourceTree = "<group>"; };
@@ -414,10 +419,11 @@
 			isa = PBXGroup;
 			children = (
 				D5AE27791CDC9AE0003DD3AF /* Community.xcassets */,
-				D5AE277A1CDC9AE0003DD3AF /* HomePage.xcassets */,
-				D5AE277B1CDC9AE0003DD3AF /* Me.xcassets */,
+				D5AE277A1CDC9AE0003DD3AF /* 首页.xcassets */,
 				D5AE277C1CDC9AE0003DD3AF /* Other.xcassets */,
 				D5AE28F01CDCD0DE003DD3AF /* AppFrame.xcassets */,
+				D54914311D00809F00676BE3 /* Me.xcassets */,
+				D54914331D008B1D00676BE3 /* 排行榜.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -617,6 +623,8 @@
 		D5AE28E21CDCCF47003DD3AF /* V */ = {
 			isa = PBXGroup;
 			children = (
+				D54914381D008C7C00676BE3 /* RankingListCell.h */,
+				D54914391D008C7C00676BE3 /* RankingListCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -753,10 +761,11 @@
 				D5AE27101CDC9A32003DD3AF /* Assets.xcassets in Resources */,
 				D5AE270B1CDC9A32003DD3AF /* Main.storyboard in Resources */,
 				D5AE288F1CDC9AE1003DD3AF /* Community.xcassets in Resources */,
-				D5AE28901CDC9AE1003DD3AF /* HomePage.xcassets in Resources */,
+				D5AE28901CDC9AE1003DD3AF /* 首页.xcassets in Resources */,
 				D5AE28F11CDCD0DE003DD3AF /* AppFrame.xcassets in Resources */,
-				D5AE28911CDC9AE1003DD3AF /* Me.xcassets in Resources */,
 				D5AE28A31CDC9AE1003DD3AF /* LCActionSheet.bundle in Resources */,
+				D54914341D008B1D00676BE3 /* 排行榜.xcassets in Resources */,
+				D54914321D00809F00676BE3 /* Me.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +860,7 @@
 				D5B2CB6D1CF4944A001B40A2 /* MeCell.m in Sources */,
 				D5AE28C31CDC9AE1003DD3AF /* TYViewStorage.m in Sources */,
 				D5AE28FD1CDCD7CA003DD3AF /* LCFCollectionViewCell.m in Sources */,
+				D549143A1D008C7C00676BE3 /* RankingListCell.m in Sources */,
 				D5AE28BE1CDC9AE1003DD3AF /* TYImageStorage.m in Sources */,
 				D5AE28D61CDC9AE1003DD3AF /* MD5Str.m in Sources */,
 				D5AE28731CDC9AE1003DD3AF /* BaseTableViewController.m in Sources */,

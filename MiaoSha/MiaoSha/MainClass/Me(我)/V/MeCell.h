@@ -10,6 +10,9 @@
 
 @interface MeCell : UITableViewCell
 
+@property (nonatomic, weak) UIImageView *iconImageView ;
+@property (nonatomic, weak) UILabel *label;
+@property (nonatomic, weak) UILabel *detailLabel;
 
 + (MeCell *)cellWithTableView:(UITableView *)tableView;
 
