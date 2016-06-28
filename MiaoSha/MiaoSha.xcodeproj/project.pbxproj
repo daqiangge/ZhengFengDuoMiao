@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D525F3B11D0F176900475A35 /* LatestAnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D525F3B01D0F176900475A35 /* LatestAnnouncementCell.m */; };
+		D525F3B31D0F188400475A35 /* LatestAnnouncement(最新揭晓).xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D525F3B21D0F188400475A35 /* LatestAnnouncement(最新揭晓).xcassets */; };
+		D525F3F61D10496200475A35 /* ModelLatestAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = D525F3F51D10496200475A35 /* ModelLatestAnnouncement.m */; };
 		D54914321D00809F00676BE3 /* Me.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54914311D00809F00676BE3 /* Me.xcassets */; };
 		D54914341D008B1D00676BE3 /* 排行榜.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54914331D008B1D00676BE3 /* 排行榜.xcassets */; };
 		D549143A1D008C7C00676BE3 /* RankingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D54914391D008C7C00676BE3 /* RankingListCell.m */; };
+		D5A9B2D31D0EE89D0065AADD /* RankingListCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A9B2D21D0EE89D0065AADD /* RankingListCell2.m */; };
+		D5A9B2E51D0F02ED0065AADD /* ModelOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A9B2E41D0F02ED0065AADD /* ModelOrder.m */; };
+		D5A9B2E81D0F02F60065AADD /* ShowOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A9B2E71D0F02F60065AADD /* ShowOrderCell.m */; };
+		D5A9B2EB1D0F03050065AADD /* SDWeiXinPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A9B2EA1D0F03050065AADD /* SDWeiXinPhotoContainerView.m */; };
 		D5AE27021CDC9A32003DD3AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE27011CDC9A32003DD3AF /* main.m */; };
 		D5AE270B1CDC9A32003DD3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5AE27091CDC9A32003DD3AF /* Main.storyboard */; };
 		D5AE270E1CDC9A32003DD3AF /* MiaoSha.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5AE270C1CDC9A32003DD3AF /* MiaoSha.xcdatamodeld */; };
@@ -63,6 +70,18 @@
 		D5AE29011CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AE28FC1CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m */; };
 		D5B2CB5F1CF493B4001B40A2 /* UITableViewCell+addLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CB5E1CF493B4001B40A2 /* UITableViewCell+addLine.m */; };
 		D5B2CB6D1CF4944A001B40A2 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CB6C1CF4944A001B40A2 /* MeCell.m */; };
+		D5C851911D0F0B5400EE367A /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C8518B1D0F0B5400EE367A /* SDBrowserImageView.m */; };
+		D5C851921D0F0B5400EE367A /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C8518D1D0F0B5400EE367A /* SDPhotoBrowser.m */; };
+		D5C851931D0F0B5400EE367A /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C851901D0F0B5400EE367A /* SDWaitingView.m */; };
+		D5E05F3A1D1823AA00998206 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F361D1823AA00998206 /* NextViewController.m */; };
+		D5E05F3B1D1823AA00998206 /* NextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E05F371D1823AA00998206 /* NextViewController.xib */; };
+		D5E05F3C1D1823AA00998206 /* ScrollImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F391D1823AA00998206 /* ScrollImage.m */; };
+		D5E05F421D1828B300998206 /* HomePageCollectionCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F411D1828B300998206 /* HomePageCollectionCell1.m */; };
+		D5E05F451D18293900998206 /* HomePageCollectionCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F441D18293900998206 /* HomePageCollectionCell2.m */; };
+		D5E05F481D18294400998206 /* HomePageCollectionCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F471D18294400998206 /* HomePageCollectionCell3.m */; };
+		D5E05F4B1D1839F600998206 /* HomePageCollectionCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F4A1D1839F600998206 /* HomePageCollectionCell4.m */; };
+		D5E05F4E1D183A0000998206 /* HomePageCollectionCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F4D1D183A0000998206 /* HomePageCollectionCell5.m */; };
+		D5E05F511D183EE700998206 /* LQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E05F501D183EE700998206 /* LQModel.m */; };
 		E335179A61DC780974A5BD0F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197414077115ADF3496C59B6 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,10 +89,23 @@
 		197414077115ADF3496C59B6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE1EAEEB2C73F9CEAE3E760 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AAF0BDE8754FA958448625E1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D525F3AF1D0F176900475A35 /* LatestAnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestAnnouncementCell.h; sourceTree = "<group>"; };
+		D525F3B01D0F176900475A35 /* LatestAnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestAnnouncementCell.m; sourceTree = "<group>"; };
+		D525F3B21D0F188400475A35 /* LatestAnnouncement(最新揭晓).xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "LatestAnnouncement(最新揭晓).xcassets"; sourceTree = "<group>"; };
+		D525F3F41D10496200475A35 /* ModelLatestAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLatestAnnouncement.h; sourceTree = "<group>"; };
+		D525F3F51D10496200475A35 /* ModelLatestAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLatestAnnouncement.m; sourceTree = "<group>"; };
 		D54914311D00809F00676BE3 /* Me.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Me.xcassets; sourceTree = "<group>"; };
 		D54914331D008B1D00676BE3 /* 排行榜.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "排行榜.xcassets"; sourceTree = "<group>"; };
 		D54914381D008C7C00676BE3 /* RankingListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingListCell.h; sourceTree = "<group>"; };
 		D54914391D008C7C00676BE3 /* RankingListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListCell.m; sourceTree = "<group>"; };
+		D5A9B2D11D0EE89D0065AADD /* RankingListCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingListCell2.h; sourceTree = "<group>"; };
+		D5A9B2D21D0EE89D0065AADD /* RankingListCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListCell2.m; sourceTree = "<group>"; };
+		D5A9B2E31D0F02ED0065AADD /* ModelOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelOrder.h; sourceTree = "<group>"; };
+		D5A9B2E41D0F02ED0065AADD /* ModelOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelOrder.m; sourceTree = "<group>"; };
+		D5A9B2E61D0F02F60065AADD /* ShowOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowOrderCell.h; sourceTree = "<group>"; };
+		D5A9B2E71D0F02F60065AADD /* ShowOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowOrderCell.m; sourceTree = "<group>"; };
+		D5A9B2E91D0F03050065AADD /* SDWeiXinPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWeiXinPhotoContainerView.h; sourceTree = "<group>"; };
+		D5A9B2EA1D0F03050065AADD /* SDWeiXinPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWeiXinPhotoContainerView.m; sourceTree = "<group>"; };
 		D5AE26FD1CDC9A32003DD3AF /* MiaoSha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiaoSha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5AE27011CDC9A32003DD3AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D5AE270A1CDC9A32003DD3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +207,30 @@
 		D5B2CB5E1CF493B4001B40A2 /* UITableViewCell+addLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+addLine.m"; sourceTree = "<group>"; };
 		D5B2CB6B1CF4944A001B40A2 /* MeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCell.h; sourceTree = "<group>"; };
 		D5B2CB6C1CF4944A001B40A2 /* MeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeCell.m; sourceTree = "<group>"; };
+		D5C8518A1D0F0B5400EE367A /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		D5C8518B1D0F0B5400EE367A /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		D5C8518C1D0F0B5400EE367A /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		D5C8518D1D0F0B5400EE367A /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		D5C8518E1D0F0B5400EE367A /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		D5C8518F1D0F0B5400EE367A /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		D5C851901D0F0B5400EE367A /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		D5E05F351D1823AA00998206 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		D5E05F361D1823AA00998206 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
+		D5E05F371D1823AA00998206 /* NextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextViewController.xib; sourceTree = "<group>"; };
+		D5E05F381D1823AA00998206 /* ScrollImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollImage.h; sourceTree = "<group>"; };
+		D5E05F391D1823AA00998206 /* ScrollImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollImage.m; sourceTree = "<group>"; };
+		D5E05F401D1828B300998206 /* HomePageCollectionCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionCell1.h; sourceTree = "<group>"; };
+		D5E05F411D1828B300998206 /* HomePageCollectionCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionCell1.m; sourceTree = "<group>"; };
+		D5E05F431D18293900998206 /* HomePageCollectionCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionCell2.h; sourceTree = "<group>"; };
+		D5E05F441D18293900998206 /* HomePageCollectionCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionCell2.m; sourceTree = "<group>"; };
+		D5E05F461D18294400998206 /* HomePageCollectionCell3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionCell3.h; sourceTree = "<group>"; };
+		D5E05F471D18294400998206 /* HomePageCollectionCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionCell3.m; sourceTree = "<group>"; };
+		D5E05F491D1839F600998206 /* HomePageCollectionCell4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionCell4.h; sourceTree = "<group>"; };
+		D5E05F4A1D1839F600998206 /* HomePageCollectionCell4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionCell4.m; sourceTree = "<group>"; };
+		D5E05F4C1D183A0000998206 /* HomePageCollectionCell5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionCell5.h; sourceTree = "<group>"; };
+		D5E05F4D1D183A0000998206 /* HomePageCollectionCell5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionCell5.m; sourceTree = "<group>"; };
+		D5E05F4F1D183EE700998206 /* LQModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQModel.h; sourceTree = "<group>"; };
+		D5E05F501D183EE700998206 /* LQModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +400,8 @@
 		D5AE273B1CDC9AE0003DD3AF /* M */ = {
 			isa = PBXGroup;
 			children = (
+				D5E05F4F1D183EE700998206 /* LQModel.h */,
+				D5E05F501D183EE700998206 /* LQModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -351,6 +409,16 @@
 		D5AE273C1CDC9AE0003DD3AF /* V */ = {
 			isa = PBXGroup;
 			children = (
+				D5E05F401D1828B300998206 /* HomePageCollectionCell1.h */,
+				D5E05F411D1828B300998206 /* HomePageCollectionCell1.m */,
+				D5E05F431D18293900998206 /* HomePageCollectionCell2.h */,
+				D5E05F441D18293900998206 /* HomePageCollectionCell2.m */,
+				D5E05F461D18294400998206 /* HomePageCollectionCell3.h */,
+				D5E05F471D18294400998206 /* HomePageCollectionCell3.m */,
+				D5E05F491D1839F600998206 /* HomePageCollectionCell4.h */,
+				D5E05F4A1D1839F600998206 /* HomePageCollectionCell4.m */,
+				D5E05F4C1D183A0000998206 /* HomePageCollectionCell5.h */,
+				D5E05F4D1D183A0000998206 /* HomePageCollectionCell5.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -424,6 +492,7 @@
 				D5AE28F01CDCD0DE003DD3AF /* AppFrame.xcassets */,
 				D54914311D00809F00676BE3 /* Me.xcassets */,
 				D54914331D008B1D00676BE3 /* 排行榜.xcassets */,
+				D525F3B21D0F188400475A35 /* LatestAnnouncement(最新揭晓).xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -431,6 +500,8 @@
 		D5AE277F1CDC9AE0003DD3AF /* ThirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				D5E05F341D1823A300998206 /* 图片轮播 */,
+				D5C851891D0F0B5400EE367A /* SDPhotoBrowser */,
 				D5AE28F21CDCD7CA003DD3AF /* LCFInfiniteScrollView */,
 				D5AE27E71CDC9AE0003DD3AF /* LCActionSheet */,
 				D5AE27EB1CDC9AE0003DD3AF /* LCProgressHUD */,
@@ -583,6 +654,8 @@
 		D5AE28DD1CDCCF47003DD3AF /* M */ = {
 			isa = PBXGroup;
 			children = (
+				D525F3F41D10496200475A35 /* ModelLatestAnnouncement.h */,
+				D525F3F51D10496200475A35 /* ModelLatestAnnouncement.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -590,6 +663,8 @@
 		D5AE28DE1CDCCF47003DD3AF /* V */ = {
 			isa = PBXGroup;
 			children = (
+				D525F3AF1D0F176900475A35 /* LatestAnnouncementCell.h */,
+				D525F3B01D0F176900475A35 /* LatestAnnouncementCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -625,6 +700,8 @@
 			children = (
 				D54914381D008C7C00676BE3 /* RankingListCell.h */,
 				D54914391D008C7C00676BE3 /* RankingListCell.m */,
+				D5A9B2D11D0EE89D0065AADD /* RankingListCell2.h */,
+				D5A9B2D21D0EE89D0065AADD /* RankingListCell2.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -651,6 +728,8 @@
 		D5AE28E51CDCCF47003DD3AF /* M */ = {
 			isa = PBXGroup;
 			children = (
+				D5A9B2E31D0F02ED0065AADD /* ModelOrder.h */,
+				D5A9B2E41D0F02ED0065AADD /* ModelOrder.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -658,6 +737,10 @@
 		D5AE28E61CDCCF47003DD3AF /* V */ = {
 			isa = PBXGroup;
 			children = (
+				D5A9B2E91D0F03050065AADD /* SDWeiXinPhotoContainerView.h */,
+				D5A9B2EA1D0F03050065AADD /* SDWeiXinPhotoContainerView.m */,
+				D5A9B2E61D0F02F60065AADD /* ShowOrderCell.h */,
+				D5A9B2E71D0F02F60065AADD /* ShowOrderCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -693,6 +776,32 @@
 				D5B2CB6C1CF4944A001B40A2 /* MeCell.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		D5C851891D0F0B5400EE367A /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				D5C8518A1D0F0B5400EE367A /* SDBrowserImageView.h */,
+				D5C8518B1D0F0B5400EE367A /* SDBrowserImageView.m */,
+				D5C8518C1D0F0B5400EE367A /* SDPhotoBrowser.h */,
+				D5C8518D1D0F0B5400EE367A /* SDPhotoBrowser.m */,
+				D5C8518E1D0F0B5400EE367A /* SDPhotoBrowserConfig.h */,
+				D5C8518F1D0F0B5400EE367A /* SDWaitingView.h */,
+				D5C851901D0F0B5400EE367A /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		D5E05F341D1823A300998206 /* 图片轮播 */ = {
+			isa = PBXGroup;
+			children = (
+				D5E05F351D1823AA00998206 /* NextViewController.h */,
+				D5E05F361D1823AA00998206 /* NextViewController.m */,
+				D5E05F371D1823AA00998206 /* NextViewController.xib */,
+				D5E05F381D1823AA00998206 /* ScrollImage.h */,
+				D5E05F391D1823AA00998206 /* ScrollImage.m */,
+			);
+			path = "图片轮播";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -760,7 +869,9 @@
 				D5AE27131CDC9A32003DD3AF /* LaunchScreen.storyboard in Resources */,
 				D5AE27101CDC9A32003DD3AF /* Assets.xcassets in Resources */,
 				D5AE270B1CDC9A32003DD3AF /* Main.storyboard in Resources */,
+				D5E05F3B1D1823AA00998206 /* NextViewController.xib in Resources */,
 				D5AE288F1CDC9AE1003DD3AF /* Community.xcassets in Resources */,
+				D525F3B31D0F188400475A35 /* LatestAnnouncement(最新揭晓).xcassets in Resources */,
 				D5AE28901CDC9AE1003DD3AF /* 首页.xcassets in Resources */,
 				D5AE28F11CDCD0DE003DD3AF /* AppFrame.xcassets in Resources */,
 				D5AE28A31CDC9AE1003DD3AF /* LCActionSheet.bundle in Resources */,
@@ -828,29 +939,41 @@
 				D5AE28D71CDC9AE1003DD3AF /* UtilString.m in Sources */,
 				D5AE28761CDC9AE1003DD3AF /* BaseModel.m in Sources */,
 				D5AE28BC1CDC9AE1003DD3AF /* TYDrawStorage.m in Sources */,
+				D5C851911D0F0B5400EE367A /* SDBrowserImageView.m in Sources */,
 				D5AE287A1CDC9AE1003DD3AF /* ModelMemberAccount.m in Sources */,
 				D5AE28711CDC9AE1003DD3AF /* LQAppFrameTabBarController.m in Sources */,
 				D5AE28791CDC9AE1003DD3AF /* HomePageVC.m in Sources */,
 				D5AE28BD1CDC9AE1003DD3AF /* TYImageCache.m in Sources */,
 				D5AE28A41CDC9AE1003DD3AF /* LCActionSheet.m in Sources */,
 				D5AE28D21CDC9AE1003DD3AF /* UIButton+LQCategory.m in Sources */,
+				D5E05F481D18294400998206 /* HomePageCollectionCell3.m in Sources */,
 				D5AE28EC1CDCCF75003DD3AF /* RankingListVC.m in Sources */,
 				D5AE28D51CDC9AE1003DD3AF /* LQHTTPSessionManager.m in Sources */,
 				D5AE28D81CDC9AE1003DD3AF /* LQCustomBtn.m in Sources */,
 				D5AE28D11CDC9AE1003DD3AF /* UIAlertView+LQAlertView.m in Sources */,
+				D5E05F3A1D1823AA00998206 /* NextViewController.m in Sources */,
+				D5C851921D0F0B5400EE367A /* SDPhotoBrowser.m in Sources */,
 				D5AE28BF1CDC9AE1003DD3AF /* TYLinkTextStorage.m in Sources */,
 				D5AE28FF1CDCD7CA003DD3AF /* LCFInfiniteScrollView.m in Sources */,
+				D5E05F4E1D183A0000998206 /* HomePageCollectionCell5.m in Sources */,
 				D5AE28E91CDCCF64003DD3AF /* LatestAnnouncementVC.m in Sources */,
 				D5AE28C11CDC9AE1003DD3AF /* TYTextContainer.m in Sources */,
 				D5AE29001CDCD7CA003DD3AF /* LCFInfiniteScrollViewItem.m in Sources */,
+				D5E05F451D18293900998206 /* HomePageCollectionCell2.m in Sources */,
 				D5AE270E1CDC9A32003DD3AF /* MiaoSha.xcdatamodeld in Sources */,
 				D5AE28D41CDC9AE1003DD3AF /* Enum.m in Sources */,
+				D525F3F61D10496200475A35 /* ModelLatestAnnouncement.m in Sources */,
+				D5C851931D0F0B5400EE367A /* SDWaitingView.m in Sources */,
 				D5AE28771CDC9AE1003DD3AF /* ModelFieldError.m in Sources */,
 				D5AE28BB1CDC9AE1003DD3AF /* TYAttributedLabel.m in Sources */,
+				D5E05F4B1D1839F600998206 /* HomePageCollectionCell4.m in Sources */,
+				D5A9B2E81D0F02F60065AADD /* ShowOrderCell.m in Sources */,
 				D5AE28C01CDC9AE1003DD3AF /* TYTextContainer+Extended.m in Sources */,
 				D5B2CB5F1CF493B4001B40A2 /* UITableViewCell+addLine.m in Sources */,
 				D5AE28FE1CDCD7CA003DD3AF /* LCFCollectionViewFlowLayout.m in Sources */,
 				D5AE28751CDC9AE1003DD3AF /* MainBaseViewController.m in Sources */,
+				D5E05F421D1828B300998206 /* HomePageCollectionCell1.m in Sources */,
+				D5A9B2D31D0EE89D0065AADD /* RankingListCell2.m in Sources */,
 				D5AE28A61CDC9AE1003DD3AF /* LCProgressHUD.m in Sources */,
 				D5AE27021CDC9A32003DD3AF /* main.m in Sources */,
 				D5AE28D31CDC9AE1003DD3AF /* UIView+Extension.m in Sources */,
@@ -859,16 +982,21 @@
 				D5AE28741CDC9AE1003DD3AF /* ChildBaseViewController.m in Sources */,
 				D5B2CB6D1CF4944A001B40A2 /* MeCell.m in Sources */,
 				D5AE28C31CDC9AE1003DD3AF /* TYViewStorage.m in Sources */,
+				D5E05F3C1D1823AA00998206 /* ScrollImage.m in Sources */,
 				D5AE28FD1CDCD7CA003DD3AF /* LCFCollectionViewCell.m in Sources */,
 				D549143A1D008C7C00676BE3 /* RankingListCell.m in Sources */,
 				D5AE28BE1CDC9AE1003DD3AF /* TYImageStorage.m in Sources */,
+				D525F3B11D0F176900475A35 /* LatestAnnouncementCell.m in Sources */,
 				D5AE28D61CDC9AE1003DD3AF /* MD5Str.m in Sources */,
+				D5A9B2E51D0F02ED0065AADD /* ModelOrder.m in Sources */,
 				D5AE28731CDC9AE1003DD3AF /* BaseTableViewController.m in Sources */,
 				D5AE29011CDCD7CA003DD3AF /* UIColor+LCFImageAdditions.m in Sources */,
+				D5E05F511D183EE700998206 /* LQModel.m in Sources */,
 				D5AE28EF1CDCCF86003DD3AF /* ShowOrderVC.m in Sources */,
 				D5AE28D01CDC9AE1003DD3AF /* NSDate+LQCategory.m in Sources */,
 				D5AE28BA1CDC9AE1003DD3AF /* NSMutableAttributedString+TY.m in Sources */,
 				D5AE28721CDC9AE1003DD3AF /* BaseNavigationController.m in Sources */,
+				D5A9B2EB1D0F03050065AADD /* SDWeiXinPhotoContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

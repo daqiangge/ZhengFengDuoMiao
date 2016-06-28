@@ -25,12 +25,15 @@ PODS:
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
-  - SDAutoLayout (1.53)
+  - SDAutoLayout (2.1.1)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage-ProgressView (0.4.0):
     - SDWebImage (~> 3.7.0)
   - SDWebImage/Core (3.7.5)
+  - TTCounterLabel (1.2.0):
+    - TTTAttributedLabel
+  - TTTAttributedLabel (1.7.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
@@ -39,9 +42,20 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - MJExtension
   - MJRefresh
-  - SDAutoLayout
+  - SDAutoLayout (~> 2.1.1)
   - SDWebImage (~> 3.7.3)
   - SDWebImage-ProgressView
+  - TTCounterLabel (from `https://github.com/TriggerTrap/TTCounterLabel.git`)
+  - TTTAttributedLabel (~> 1.7.1)
+
+EXTERNAL SOURCES:
+  TTCounterLabel:
+    :git: https://github.com/TriggerTrap/TTCounterLabel.git
+
+CHECKOUT OPTIONS:
+  TTCounterLabel:
+    :commit: c388916f1e7ffb8789c04e33bb26cf7a231a9747
+    :git: https://github.com/TriggerTrap/TTCounterLabel.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -50,8 +64,10 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
+  SDAutoLayout: c18678b6ae28c67d89cb132e770cfbac9ee20d25
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SDWebImage-ProgressView: cdc29091ec0d53fd6dab3df65039a4f308e0a5ae
+  TTCounterLabel: 184be6e977525c57019d9ed03787048bd2fb115f
+  TTTAttributedLabel: 19f03d496810ab0706c392a297c6d49fe173bac4
 
 COCOAPODS: 0.39.0

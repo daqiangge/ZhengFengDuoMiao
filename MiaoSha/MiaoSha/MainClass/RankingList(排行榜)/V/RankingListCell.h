@@ -11,6 +11,9 @@
 @interface RankingListCell : UITableViewCell
 
 @property (nonatomic, weak) UIImageView *rankingNumImageView;
+@property (nonatomic, weak) UILabel *numlabel ;
+
+@property (nonatomic, copy) NSString *imageViewName;
 
 + (RankingListCell *)cellWithTableView:(UITableView *)tableView;
 

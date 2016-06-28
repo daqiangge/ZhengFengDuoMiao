@@ -40,4 +40,15 @@
  */
 + (NSDate *)dateWithTimeIntervalInMilliSecondSince1970:(double)timeIntervalInMilliSecond;
 
+/**
+ *  时间转时戳
+ */
++ (long)timeIntervalWithDate:(NSDate *)date;
+
+
+/**
+ *  获取网络当前时间
+ */
++ (NSDate *)getInternetDate;
+
 @end
