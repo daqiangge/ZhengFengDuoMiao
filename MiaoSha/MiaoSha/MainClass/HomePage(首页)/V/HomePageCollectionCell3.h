@@ -10,4 +10,6 @@
 
 @interface HomePageCollectionCell3 : UICollectionViewCell
 
+@property (nonatomic, strong) LQModelProductDetail *model;
+
 @end

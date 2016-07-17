@@ -14,6 +14,13 @@
 @property (strong, nonatomic) TTCounterLabel *timeLabel;
 @property (nonatomic, weak) UIView *timeView;
 @property (nonatomic, weak) UIView *jieXiaoView;
+@property (nonatomic, weak) UIImageView *iconImageView;
+@property (nonatomic, weak) UILabel *nameLabel;
+@property (nonatomic, weak) UILabel *priceLabel;
+@property (nonatomic, weak) UILabel *zhongJiangNameLabel;
+@property (nonatomic, weak) UILabel *renCiLabel;
+@property (nonatomic, weak) UILabel *dateLabel;
+@property (nonatomic, weak) UIImageView *personIconImageView;
 
 @end
 
@@ -50,18 +57,21 @@
     UIImageView *iconImageView = [[UIImageView alloc] init];
     iconImageView.image = [UIImage imageNamed:@"zxjx_img001"];
     [self.contentView addSubview:iconImageView];
+    self.iconImageView = iconImageView;
     
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.font = [UIFont systemFontOfSize:12];
     nameLabel.textColor = [UIColor blackColor];
     nameLabel.text = @"啊实打实大的撒大实大的撒实大的撒实大实大的撒实大的撒的撒实大的撒大大";
     [self.contentView addSubview:nameLabel];
+    self.nameLabel = nameLabel;
     
     UILabel *priceLabel = [[UILabel alloc] init];
     priceLabel.font = [UIFont systemFontOfSize:10];
     priceLabel.textColor = [UIColor lightGrayColor];
     priceLabel.text = @"￥999999.9";
     [self.contentView addSubview:priceLabel];
+    self.priceLabel = priceLabel;
     
     UIView *timeView = [[UIView alloc] init];
     timeView.backgroundColor = [UIColor whiteColor];
@@ -91,18 +101,26 @@
     zhongJiangNameLabel.textColor = [UIColor blackColor];
     zhongJiangNameLabel.text = @"中奖者：王先生";
     [jieXiaoView addSubview:zhongJiangNameLabel];
+    self.zhongJiangNameLabel = zhongJiangNameLabel;
     
     UILabel *renCiLabel = [[UILabel alloc] init];
     renCiLabel.font = [UIFont systemFontOfSize:10];
     renCiLabel.textColor = [UIColor blackColor];
     renCiLabel.text = @"本期夺宝：20人次";
     [jieXiaoView addSubview:renCiLabel];
+    self.renCiLabel = renCiLabel;
     
     UILabel *dateLabel = [[UILabel alloc] init];
     dateLabel.font = [UIFont systemFontOfSize:10];
     dateLabel.textColor = [UIColor blackColor];
     dateLabel.text = @"揭晓时间：1分钟前";
     [jieXiaoView addSubview:dateLabel];
+    self.dateLabel = dateLabel;
+    
+    UIImageView *personIconImageView = [[UIImageView alloc] init];
+    personIconImageView.image = [UIImage imageNamed:@"awards_useImg_001"];
+    [jieXiaoView addSubview:personIconImageView];
+    self.personIconImageView = personIconImageView;
     
     iconImageView.sd_layout
     .leftSpaceToView(self.contentView,10)
@@ -147,10 +165,16 @@
     .bottomEqualToView(timeImageView)
     .rightSpaceToView(timeView,0);
     
+    personIconImageView.sd_layout
+    .rightSpaceToView(jieXiaoView,0)
+    .bottomSpaceToView(jieXiaoView,0)
+    .widthIs(30)
+    .heightIs(30);
+    
     dateLabel.sd_layout
     .leftSpaceToView(jieXiaoView,0)
     .bottomSpaceToView(jieXiaoView,0)
-    .rightSpaceToView(jieXiaoView,0)
+    .rightSpaceToView(personIconImageView,10)
     .autoHeightRatio(0);
     
     renCiLabel.sd_layout

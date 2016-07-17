@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LQModelLunBoZhongJiang.h"
 
 @interface HomePageCollectionCell1 : UICollectionViewCell
+
+@property (nonatomic, strong) NSMutableArray *titleArray;
 
 @end

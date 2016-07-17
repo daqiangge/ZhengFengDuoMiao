@@ -8,22 +8,99 @@
 
 #import "HomePageVC.h"
 #import "ScrollImage.h"
-#import "NextViewController.h"
 #import "LCFInfiniteScrollView.h"
+#import "NextViewController.h"
+#import "SDWebImageCompat.h"
 #import "UIColor+LCFImageAdditions.h"
+#import "ProductDetailsVC.h"
 #import "HomePageCollectionCell1.h"
 #import "HomePageCollectionCell2.h"
 #import "HomePageCollectionCell3.h"
 #import "HomePageCollectionCell4.h"
 #import "HomePageCollectionCell5.h"
+#import "LQTouTiaoView.h"
+
+#import "LQModelPicture.h"
+
+#import "LSNetworkingScrollView.h"
 
 @interface HomePageVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ScrollImageDelegate>
 
-@property (nonatomic, strong) LCFInfiniteScrollView *infiniteScrollView;
 @property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, strong) LCFInfiniteScrollView *infiniteScrollView;
+
+@property (nonatomic, strong) NSMutableArray *modelPictureArray;
+@property (nonatomic, strong) NSMutableArray *modelLunBoZhongJiangArray;
+@property (nonatomic, strong) NSMutableArray *modelZuiXingJieXiaoArray;
+
+@property (nonatomic, strong) NSMutableArray *fengMiaoQuArray;
+@property (nonatomic, strong) NSMutableArray *kuangZhanQuArray;
+@property (nonatomic, strong) NSMutableArray *yuanMengQuArray;
+@property (nonatomic, assign) int seleIndex;
+
 @end
 
 @implementation HomePageVC
+
+- (NSMutableArray *)modelZuiXingJieXiaoArray
+{
+    if (!_modelZuiXingJieXiaoArray)
+    {
+        _modelZuiXingJieXiaoArray = [NSMutableArray array];
+    }
+    
+    return _modelZuiXingJieXiaoArray;
+}
+
+- (NSMutableArray *)modelLunBoZhongJiangArray
+{
+    if (!_modelLunBoZhongJiangArray)
+    {
+        _modelLunBoZhongJiangArray = [NSMutableArray array];
+    }
+    
+    return _modelLunBoZhongJiangArray;
+}
+
+- (NSMutableArray *)modelPictureArray
+{
+    if (!_modelPictureArray)
+    {
+        _modelPictureArray = [NSMutableArray array];
+    }
+    
+    return _modelPictureArray;
+}
+
+- (NSMutableArray *)fengMiaoQuArray
+{
+    if (!_fengMiaoQuArray)
+    {
+        _fengMiaoQuArray = [NSMutableArray array];
+    }
+    
+    return _fengMiaoQuArray;
+}
+
+- (NSMutableArray *)kuangZhanQuArray
+{
+    if (!_kuangZhanQuArray)
+    {
+        _kuangZhanQuArray = [NSMutableArray array];
+    }
+    
+    return _kuangZhanQuArray;
+}
+
+- (NSMutableArray *)yuanMengQuArray
+{
+    if (!_yuanMengQuArray)
+    {
+        _yuanMengQuArray = [NSMutableArray array];
+    }
+    
+    return _yuanMengQuArray;
+}
 
 - (void)viewDidLoad
 {
@@ -35,9 +112,19 @@
     UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_msg"] style:UIBarButtonItemStylePlain target:self action:@selector(didSearch)];
     self.navigationItem.rightBarButtonItem = rightBarBtn;
     
+    self.seleIndex = 1;
+    
     [self drawView];
     [self drawHeaderView];
-//    [self request];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self requestLunBoTu];
+    [self requestLunBoZhongJiang];
+    [self requestZuiXinJieXiao];
 }
 
 - (void)drawView
@@ -78,20 +165,16 @@
     self.infiniteScrollView.placeholderImage = [color lcf_imageSized:CGSizeMake(ScreenWidth, 150)];
     [self.collectionView addSubview:self.infiniteScrollView];
     
-    
     self.infiniteScrollView.didSelectItemAtIndex = ^(NSUInteger index) {
         NSLog(@"didSelectItemAtIndex: %@", @(index));
     };
-    
-    /** 网络图片 **/
-    NSArray *array1 = @[@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg"];
-    NSMutableArray *array2 = [NSMutableArray array];
-    for (NSString *urlStr in array1)
-    {
-        LCFInfiniteScrollViewItem *item = [LCFInfiniteScrollViewItem itemWithImageURL:urlStr text:nil];
-        [array2 addObject:item];
-    }
-    self.infiniteScrollView.items = array2;
+//        NSMutableArray *array2 = [NSMutableArray array];
+//    for (NSString *urlStr in array1)
+//    {
+//        LCFInfiniteScrollViewItem *item = [LCFInfiniteScrollViewItem itemWithImageURL:urlStr text:nil];
+//        [array2 addObject:item];
+//    }
+//    self.infiniteScrollView.items = array2;
 }
 
 - (void)didSearch
@@ -114,11 +197,31 @@
     }
     if (section == 1)
     {
-        return 4;
+        return self.modelZuiXingJieXiaoArray.count+1;
     }
     if (section == 2)
     {
-        return 10;
+        switch (self.seleIndex)
+        {
+            case 1:
+            {
+                return 4;
+            }
+                break;
+            case 2:
+            {
+                return 8;
+            }
+                break;
+            case 3:
+            {
+                return 13;
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
     
     return 0;
@@ -129,6 +232,7 @@
     if (indexPath.section == 0)
     {
         HomePageCollectionCell1 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageCollectionCell1" forIndexPath:indexPath];
+        cell.titleArray = self.modelLunBoZhongJiangArray;
         return cell;
     }
     
@@ -140,6 +244,7 @@
             return cell;
         }else{
             HomePageCollectionCell3 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageCollectionCell3" forIndexPath:indexPath];
+            cell.model = self.modelZuiXingJieXiaoArray[indexPath.row-1];
             return cell;
         }
     }
@@ -149,6 +254,21 @@
         if (indexPath.row == 0)
         {
             HomePageCollectionCell4 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageCollectionCell4" forIndexPath:indexPath];
+            
+            __weak typeof(self) weakSelf = self;
+            cell.clickFengMiaoQuBlock = ^(){
+                weakSelf.seleIndex = 1;
+                [weakSelf.collectionView reloadData];
+            };
+            cell.clickKuangZhanQuBlock = ^(){
+                weakSelf.seleIndex = 2;
+                [weakSelf.collectionView reloadData];
+            };
+            cell.clickYuanMengQuBlock = ^(){
+                weakSelf.seleIndex = 3;
+                [weakSelf.collectionView reloadData];
+            };
+            
             return cell;
         }else{
             HomePageCollectionCell5 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageCollectionCell5" forIndexPath:indexPath];
@@ -189,7 +309,7 @@
         }
         else
         {
-            return CGSizeMake((ScreenWidth-1)/3, 120);
+            return CGSizeMake((ScreenWidth-2)/2, 150);
         }
     }
     
@@ -251,19 +371,111 @@
     return 0;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1)
+    {
+        if (indexPath.row != 0)
+        {
+            LQModelProductDetail *model = self.modelZuiXingJieXiaoArray[indexPath.row -1];
+            
+            ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+            vc.addedId = model.added.sid;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    if (indexPath.section == 2)
+    {
+        if (indexPath.row != 0)
+        {
+            ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark ================= 网络 =================
-- (void)request
+/**
+ *  获取轮播图
+ */
+- (void)requestLunBoTu
 {
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < 3; i++) {
-        
-        LCFInfiniteScrollViewItem *item = [LCFInfiniteScrollViewItem itemWithImageURL:@"http://a.hiphotos.baidu.com/image/pic/item/f9dcd100baa1cd11daf25f19bc12c8fcc3ce2d46.jpg" text:@"啊实打实大师的"];
-        [array addObject:item];
-        
-    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"0" forKey:@"type"];
     
-    self.infiniteScrollView.items = array;
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/sys/user/getImages" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        NSArray *array = [LQModelPicture mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"appPictureList"]];
+        
+        [self.modelPictureArray removeAllObjects];
+        for (LQModelPicture *model in array)
+        {
+            LCFInfiniteScrollViewItem *item = [LCFInfiniteScrollViewItem itemWithImageURL:URLSTR(model.appPath) text:@""];
+            [self.modelPictureArray addObject:item];
+        }
+        self.infiniteScrollView.items = self.modelPictureArray;
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+/**
+ *  轮播中奖信息
+ */
+- (void)requestLunBoZhongJiang
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"5" forKey:@"count"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/added/findNewPublish" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        NSArray *array = [LQModelLunBoZhongJiang mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"messageList"]];
+        
+        [self.modelLunBoZhongJiangArray removeAllObjects];
+        for (LQModelLunBoZhongJiang *model in array)
+        {
+            [self.modelLunBoZhongJiangArray addObject:model.message];
+        }
+        
+        [self.collectionView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+/**
+ *  获取最新揭晓
+ */
+- (void)requestZuiXinJieXiao
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"1" forKey:@"isMain"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/record/findPublish" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        NSArray *array = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"recordList"]];
+
+        [self.modelZuiXingJieXiaoArray removeAllObjects];
+        for (LQModelProductDetail *model in array)
+        {
+            [self.modelZuiXingJieXiaoArray addObject:model];
+        }
+        
+        [self.collectionView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark -

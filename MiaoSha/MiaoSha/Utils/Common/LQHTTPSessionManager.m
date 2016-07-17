@@ -34,7 +34,7 @@
     static LQHTTPSessionManager *sessionManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sessionManager = [[LQHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:SERVER_URL]];
+        sessionManager = [[LQHTTPSessionManager alloc] init];
     });
     return sessionManager;
 }
@@ -65,7 +65,7 @@ successBackfailError:(void (^)(id responseObject))successBackfailError
     
     DLog(@"\n===========POST===========\n%@:\n%@", URLString, parameters);
     
-    [self POST:URLString
+    [self POST:URLSTR(URLString)
     parameters:parameters
        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
            DLog(@"\n===========success===========\n%@:\n%@", URLString, responseObject);
@@ -103,7 +103,7 @@ successBackfailError:(void (^)(id responseObject))successBackfailError
     
     DLog(@"\n===========POST===========\n%@:\n%@", URLString, parameters);
     
-    [self POST:URLString
+    [self POST:URLSTR(URLString)
     parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (NSDictionary *fileInfo in fileInfos)
@@ -155,19 +155,15 @@ successBackfailError:(void (^)(id responseObject))successBackfailError
     //        return;
     //    }
     
-    if(baseModel.state == 0)
+    if(baseModel.success == 1)
     {
         success(baseModel.data);
         return;
     }
     
-    if (baseModel.fieldErrors.count)
-    {
-        ModelFieldError *modelFieldError = [baseModel.fieldErrors firstObject];
-        [LCProgressHUD showFailure:modelFieldError.message];
-        
-        successBackfailError(modelFieldError);
-    }
+    [LCProgressHUD showFailure:baseModel.message];
+    
+    successBackfailError(baseModel.message);
 }
 
 @end

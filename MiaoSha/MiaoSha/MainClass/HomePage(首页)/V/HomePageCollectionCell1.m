@@ -7,6 +7,13 @@
 //
 
 #import "HomePageCollectionCell1.h"
+#import "LQTouTiaoView.h"
+
+@interface HomePageCollectionCell1 ()
+
+@property (nonatomic, weak) LQTouTiaoView *totiaoView;
+
+@end
 
 @implementation HomePageCollectionCell1
 
@@ -28,11 +35,15 @@
     iconImageView.image = [UIImage imageNamed:@"ic_speaker"];
     [self.contentView addSubview:iconImageView];
     
-    UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont systemFontOfSize:12];
-    label.textColor = [UIColor grayColor];
-    label.text = @"恭喜王先生获得了秒杀王的称号";
-    [self.contentView addSubview:label];
+    LQTouTiaoView *totiaoView = [[LQTouTiaoView alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 100, 30)];
+    [self.contentView addSubview:totiaoView];
+    self.totiaoView = totiaoView;
+    
+//    UILabel *label = [[UILabel alloc] init];
+//    label.font = [UIFont systemFontOfSize:12];
+//    label.textColor = [UIColor grayColor];
+//    label.text = @"恭喜王先生获得了秒杀王的称号";
+//    [self.contentView addSubview:label];
     
     UILabel *moreLabel = [[UILabel alloc] init];
     moreLabel.font = [UIFont systemFontOfSize:12];
@@ -63,13 +74,18 @@
     .bottomEqualToView(self.contentView)
     .widthIs(50);
     
-    label.sd_layout
-    .leftSpaceToView(iconImageView,10)
-    .topEqualToView(self.contentView)
-    .bottomEqualToView(self.contentView)
-    .rightSpaceToView(moreLabel,5);
+//    label.sd_layout
+//    .leftSpaceToView(iconImageView,10)
+//    .topEqualToView(self.contentView)
+//    .bottomEqualToView(self.contentView)
+//    .rightSpaceToView(moreLabel,5);
+}
+
+- (void)setTitleArray:(NSMutableArray *)titleArray
+{
+    _titleArray = titleArray;
     
-    
+    self.totiaoView.titleArray = titleArray;
 }
 
 @end

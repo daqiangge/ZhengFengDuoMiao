@@ -41,6 +41,7 @@
 #import "IQKeyboardManager.h"
 #import "TYAttributedLabel.h"
 #import "LCActionSheet.h"
+#import "NSString+LQCategory.h"
 
 #import "GloabalDefines.h"
 #import "LQHTTPSessionManager.h"
@@ -51,5 +52,15 @@
 #import "UIAlertView+LQAlertView.h"
 #import "NSDate+LQCategory.h"
 #import "UITableViewCell+addLine.h"
+#import "UITextView+Placeholder.h"
+
+
+//#import "ReactiveCocoa.h"
+
+#import "LQModelMember.h"
+#import "LQModelUser.h"
+#import "LQModelProduct.h"
+#import "LQModelAdded.h"
+#import "LQModelProductDetail.h"
 
 #endif

@@ -34,6 +34,7 @@ PODS:
   - TTCounterLabel (1.2.0):
     - TTTAttributedLabel
   - TTTAttributedLabel (1.7.5)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - SDWebImage-ProgressView
   - TTCounterLabel (from `https://github.com/TriggerTrap/TTCounterLabel.git`)
   - TTTAttributedLabel (~> 1.7.1)
+  - UITextView+Placeholder
 
 EXTERNAL SOURCES:
   TTCounterLabel:
@@ -69,5 +71,6 @@ SPEC CHECKSUMS:
   SDWebImage-ProgressView: cdc29091ec0d53fd6dab3df65039a4f308e0a5ae
   TTCounterLabel: 184be6e977525c57019d9ed03787048bd2fb115f
   TTTAttributedLabel: 19f03d496810ab0706c392a297c6d49fe173bac4
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
 COCOAPODS: 0.39.0

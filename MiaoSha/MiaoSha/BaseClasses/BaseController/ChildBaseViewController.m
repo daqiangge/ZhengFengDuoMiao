@@ -36,7 +36,7 @@
 -(UIBarButtonItem *)backButtonItem
 {
     UIButton * button = [ UIButton buttonWithType : UIButtonTypeCustom ];
-    [button setImage :[ UIImage imageNamed : @"nav_back" ] forState : UIControlStateNormal ];
+    [button setImage :[ UIImage imageNamed : @"back" ] forState : UIControlStateNormal ];
     [button setFrame : CGRectMake ( 0 , 0 , 40 , 40 )];
     [button  setImageEdgeInsets : UIEdgeInsetsMake ( 0 , - 30 , 0 , 0 )];
     [button addTarget : self action :@selector(back) forControlEvents : UIControlEventTouchUpInside ];

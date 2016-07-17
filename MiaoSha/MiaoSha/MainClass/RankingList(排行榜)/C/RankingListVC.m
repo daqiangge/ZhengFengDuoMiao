@@ -34,15 +34,18 @@
     UIButton *chongzhiWangBtn = [[UIButton alloc] init];
     [chongzhiWangBtn setTitle:@"充值王" forState:UIControlStateNormal];
     [chongzhiWangBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [chongzhiWangBtn setTitleColor:[UIColor colorWithRed:0.992 green:0.824 blue:0.188 alpha:1.00] forState:UIControlStateSelected];
     chongzhiWangBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     chongzhiWangBtn.backgroundColor = [UIColor whiteColor];
+    chongzhiWangBtn.selected = YES;
     [chongzhiWangBtn addTarget:self action:@selector(didClickChongzhiWangBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:chongzhiWangBtn];
     self.chongzhiWangBtn = chongzhiWangBtn;
     
     UIButton *miaoshaWangBtn = [[UIButton alloc] init];
     [miaoshaWangBtn setTitle:@"秒杀王" forState:UIControlStateNormal];
-    [miaoshaWangBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [miaoshaWangBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [miaoshaWangBtn setTitleColor:[UIColor colorWithRed:0.992 green:0.824 blue:0.188 alpha:1.00] forState:UIControlStateSelected];
     miaoshaWangBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     miaoshaWangBtn.backgroundColor = [UIColor whiteColor];
     [miaoshaWangBtn addTarget:self action:@selector(didClickMiaoshaWangBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -105,8 +108,9 @@
 
 - (void)didClickChongzhiWangBtn
 {
-    [self.chongzhiWangBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.miaoshaWangBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.chongzhiWangBtn.selected = YES;
+    self.miaoshaWangBtn.selected = NO;
+    
     self.tableView1.hidden = NO;
     self.tableView2.hidden = YES;
     
@@ -119,8 +123,9 @@
 
 - (void)didClickMiaoshaWangBtn
 {
-    [self.chongzhiWangBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [self.miaoshaWangBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.chongzhiWangBtn.selected = NO;
+    self.miaoshaWangBtn.selected = YES;
+    
     self.tableView1.hidden = YES;
     self.tableView2.hidden = NO;
     

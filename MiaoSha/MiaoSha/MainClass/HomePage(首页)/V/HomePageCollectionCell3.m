@@ -8,6 +8,14 @@
 
 #import "HomePageCollectionCell3.h"
 
+@interface HomePageCollectionCell3 ()
+
+@property (nonatomic, weak) UIImageView *iconImageView;
+@property (nonatomic, weak) UILabel *goodsName;
+@property (nonatomic, weak) UILabel *zhongJiangNameLabel;
+
+@end
+
 @implementation HomePageCollectionCell3
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -27,12 +35,14 @@
     UIImageView *iconImageView = [[UIImageView alloc] init];
     iconImageView.image = [UIImage imageNamed:@"home_zxjx-img001"];
     [self.contentView addSubview:iconImageView];
+    self.iconImageView = iconImageView;
     
     UILabel *goodsName = [[UILabel alloc] init];
     goodsName.font = [UIFont systemFontOfSize:12];
     goodsName.textColor = [UIColor blackColor];
     goodsName.text = @"计凯斯是多大阿萨德擦擦擦";
     [self.contentView addSubview:goodsName];
+    self.goodsName = goodsName;
     
     UILabel *zhongJiangLabel = [[UILabel alloc] init];
     zhongJiangLabel.font = [UIFont systemFontOfSize:12];
@@ -47,6 +57,7 @@
     zhongJiangNameLabel.textColor = [UIColor grayColor];
     zhongJiangNameLabel.text = @"中奖者名称";
     [self.contentView addSubview:zhongJiangNameLabel];
+    self.zhongJiangNameLabel = zhongJiangNameLabel;
     
     UIView *leftLineView = [[UIView alloc] init];
     leftLineView.backgroundColor = [UIColor colorWithRed:0.906 green:0.910 blue:0.914 alpha:1.00];
@@ -82,6 +93,15 @@
     .widthIs(1)
     .heightIs(100);
     
+}
+
+- (void)setModel:(LQModelProductDetail *)model
+{
+    _model = model;
+    
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.added.product.appPath)] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.goodsName.text = model.added.product.name;
+    self.zhongJiangNameLabel.text = model.user.name;
 }
 
 @end

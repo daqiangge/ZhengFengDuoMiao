@@ -10,9 +10,9 @@
 
 @implementation BaseModel
 
-+ (NSDictionary *)objectClassInArray
-{
-    return @{@"fieldErrors":@"ModelFieldError"};
-}
+//+ (NSDictionary *)objectClassInArray
+//{
+//    return @{@"fieldErrors":@"ModelFieldError"};
+//}
 
 @end

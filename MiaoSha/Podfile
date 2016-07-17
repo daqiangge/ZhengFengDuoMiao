@@ -13,3 +13,6 @@ pod 'Masonry', '~> 0.6.4'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'TTCounterLabel',:git => "https://github.com/TriggerTrap/TTCounterLabel.git"
 pod 'TTTAttributedLabel', '~> 1.7.1'
+pod 'UITextView+Placeholder'
+#pod 'ReactiveCocoa'
+#pod 'NJBannerView', '~> 1.0.4'
