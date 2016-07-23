@@ -9,6 +9,7 @@
 #import "SheZhiVC.h"
 #import "MeCell.h"
 #import "TuiChuDengLuCell.h"
+#import "LoginVC.h"
 
 #define TitleArray @[@[@"个人资料",@"修改密码"],@[@"清除缓存"],@[@"关于我们",@"鼓励一下吧"],@[@""]]
 
@@ -58,8 +59,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return [TitleArray[section] count];
+    NSArray *array = TitleArray[section];
+    return [array count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,6 +108,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == [TitleArray count]-1)
+    {
+        [[LQModelMember sharedMemberMySelf] logOut];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        return;
+    }
+    
     
     if (indexPath.section == 1)
     {

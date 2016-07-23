@@ -16,6 +16,7 @@
 @property (nonatomic, weak) UILabel *qiShuLabel;
 @property (nonatomic, weak) UILabel *zongRenCiLabel;
 @property (nonatomic, weak) UILabel *shengYuRenCiLabel;
+@property (nonatomic, weak) UILabel *canYuRenCiLabel;
 
 @end
 
@@ -88,11 +89,18 @@
     [self.contentView addSubview:shengYuRenCiLabel];
     self.shengYuRenCiLabel = shengYuRenCiLabel;
     
+    UILabel *canYuRenCiLabel = [[UILabel alloc] init];
+    canYuRenCiLabel.font = [UIFont systemFontOfSize:10];;
+    canYuRenCiLabel.textColor =  [UIColor grayColor];;
+    canYuRenCiLabel.text = @"本次参与：20人次";
+    [self.contentView addSubview:canYuRenCiLabel];
+    self.canYuRenCiLabel = canYuRenCiLabel;
+    
     iconImage.sd_layout
     .leftSpaceToView(self.contentView,10)
     .centerYEqualToView(self.contentView)
-    .widthIs(75)
-    .heightIs(75);
+    .widthIs(60)
+    .heightIs(60);
     
     nameLabel.sd_layout
     .topSpaceToView(self.contentView,10)
@@ -117,20 +125,35 @@
     .leftEqualToView(qiShuLabel)
     .topSpaceToView(processView,5)
     .widthIs(150)
-    .autoHeightRatio(0);
+    .heightIs(15);
     
     shengYuRenCiLabel.sd_layout
     .rightEqualToView(processView)
     .topSpaceToView(processView,5)
     .widthIs(150)
-    .autoHeightRatio(0);
+    .heightIs(15);
+    
+    canYuRenCiLabel.sd_layout
+    .leftEqualToView(zongRenCiLabel)
+    .topSpaceToView(zongRenCiLabel,5)
+    .widthIs(150)
+    .heightIs(15);
+    
+    [self setupAutoHeightWithBottomView:self.canYuRenCiLabel bottomMargin:20];
 }
 
-- (void)setModel:(BaseModel *)model
+- (void)setModel:(LQModelProductDetail *)model
 {
     _model = model;
     
-    [self setupAutoHeightWithBottomView:self.shengYuRenCiLabel bottomMargin:10];
+    self.nameLabel.text = model.period.product.name;
+    self.qiShuLabel.text = [NSString stringWithFormat:@"期数：%@",model.period.number];
+    self.zongRenCiLabel.text = [NSString stringWithFormat:@"总需%d人次",model.period.allCount];
+    self.shengYuRenCiLabel.text = [NSString stringWithFormat:@"剩余%d人次",model.period.allCount - model.period.currentCount];
+    self.processView.progress = model.period.currentCount*1.00/model.period.allCount;
+    self.canYuRenCiLabel.text = [NSString stringWithFormat:@"本次参与：%d人次",model.count];
+    
+    [self setupAutoHeightWithBottomView:self.canYuRenCiLabel bottomMargin:20];
 }
 
 @end

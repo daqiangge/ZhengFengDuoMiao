@@ -10,9 +10,6 @@
 
 @interface RankingListCell ()
 
-@property (nonatomic, weak) UIImageView *iconImageView;
-@property (nonatomic, weak) UILabel *nameLabel;
-
 @end
 
 @implementation RankingListCell

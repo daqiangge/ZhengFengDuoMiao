@@ -116,6 +116,16 @@
 - (void)setModel:(ModelAddress *)model
 {
     _model = model;
+ 
+    self.nameLabel.text = model.name;
+    self.mobileLabel.text = model.mobile;
+    if (model.isDefault) {
+        self.moRenLabel.hidden = NO;
+    }else{
+        self.moRenLabel.hidden = YES;
+    }
+    self.addressLabel.text = [NSString stringWithFormat:@"%@%@%@%@",model.province,model.city,model.county,model.detail];
+    
     
     [self setupAutoHeightWithBottomView:self.addressLabel bottomMargin:10];
 }

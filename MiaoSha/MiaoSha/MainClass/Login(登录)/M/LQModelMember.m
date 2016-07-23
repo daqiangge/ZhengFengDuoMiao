@@ -28,6 +28,7 @@ static LQModelMember *instanceModel = nil;
             instanceModel.mobile = [UserDefaults valueForKey:@"user_mobile"];
             instanceModel.userType = [UserDefaults valueForKey:@"user_userType"];
             instanceModel.appPhoto = [UserDefaults valueForKey:@"user_appPhoto"];
+            instanceModel.userKey = [UserDefaults valueForKey:@"user_userKey"];
         }
     });
     return instanceModel;
@@ -106,6 +107,28 @@ static LQModelMember *instanceModel = nil;
     _appPhoto = appPhoto;
     
     [UserDefaults setValue:appPhoto forKey:@"user_appPhoto"];
+    [UserDefaults synchronize];
+}
+
+- (void)setUserKey:(NSString *)userKey
+{
+    _userKey = userKey;
+    
+    [UserDefaults setValue:userKey forKey:@"user_userKey"];
+    [UserDefaults synchronize];
+}
+
+- (void)logOut
+{
+    [UserDefaults removeObjectForKey:@"user_id"];
+    [UserDefaults removeObjectForKey:@"user_createDate"];
+    [UserDefaults removeObjectForKey:@"user_name"];
+    [UserDefaults removeObjectForKey:@"user_loginName"];
+    [UserDefaults removeObjectForKey:@"user_mobile"];
+    [UserDefaults removeObjectForKey:@"user_userType"];
+    [UserDefaults removeObjectForKey:@"user_appPhoto"];
+    [UserDefaults removeObjectForKey:@"user_userKey"];
+    [UserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"isLogin"];
     [UserDefaults synchronize];
 }
 

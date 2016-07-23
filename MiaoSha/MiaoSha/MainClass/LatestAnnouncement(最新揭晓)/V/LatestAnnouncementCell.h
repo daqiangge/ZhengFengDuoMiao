@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ModelLatestAnnouncement.h"
 
 @interface LatestAnnouncementCell : UITableViewCell
 
-@property (nonatomic, strong) ModelLatestAnnouncement *model;
+@property (nonatomic, strong) LQModelProductDetail *model;
 
 + (LatestAnnouncementCell *)cellWithTableView:(UITableView *)tableView;
 

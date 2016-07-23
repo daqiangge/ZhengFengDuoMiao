@@ -67,6 +67,7 @@
     priceLabel.font = [UIFont systemFontOfSize:10];
     priceLabel.textColor = [UIColor lightGrayColor];
     priceLabel.text = @"￥999999.9";
+    priceLabel.hidden = YES;
     [self.contentView addSubview:priceLabel];
     self.priceLabel = priceLabel;
     
@@ -98,14 +99,15 @@
     
     UIImageView *personIconImageView = [[UIImageView alloc] init];
     personIconImageView.image = [UIImage imageNamed:@"awards_useImg_001"];
+    personIconImageView.hidden = YES;
     [jieXiaoView addSubview:personIconImageView];
     self.personIconImageView = personIconImageView;
     
     iconImageView.sd_layout
     .leftSpaceToView(self.contentView,10)
     .centerYEqualToView(self.contentView)
-    .widthIs(75)
-    .heightIs(75);
+    .widthIs(60)
+    .heightIs(60);
     
     nameLabel.sd_layout
     .topSpaceToView(self.contentView,10)
@@ -152,6 +154,17 @@
     
     [self addUnderlineWithLeftMargin:0];
     
+}
+
+- (void)setModel:(LQModelProductDetail *)model
+{
+    _model = model;
+    
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.nameLabel.text = model.product.name;
+    self.zhongJiangNameLabel.text = [NSString stringWithFormat:@"中奖者：%@",[LQModelMember sharedMemberMySelf].name.length?[LQModelMember sharedMemberMySelf].name:[LQModelMember sharedMemberMySelf].loginName];
+    self.renCiLabel.text = [NSString stringWithFormat:@"本期夺宝：%d人次",model.userCount];
+    self.dateLabel.text = [NSString stringWithFormat:@"揭晓时间：%@",model.lotteryTime];
 }
 
 @end

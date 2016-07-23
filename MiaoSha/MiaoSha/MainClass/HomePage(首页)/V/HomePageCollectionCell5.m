@@ -13,6 +13,7 @@
 @property (nonatomic, weak) UIImageView *iconImageView;
 @property (nonatomic, weak) UILabel *goodsName;
 @property (nonatomic, weak) UILabel *jinDuLabel;
+@property (nonatomic, weak) UIProgressView *processView;
 
 @end
 
@@ -56,6 +57,7 @@
     processView.progressTintColor = [UIColor colorWithRed:0.980 green:0.043 blue:0.482 alpha:1.00];
     processView.progress = 0.8;
     [self.contentView addSubview:processView];
+    self.processView = processView;
     
     UIButton *addShoppingCartBtn = [[UIButton alloc] init];
     [addShoppingCartBtn setTitle:@"加入清单" forState:UIControlStateNormal];
@@ -99,10 +101,20 @@
     
 }
 
-- (void)setModel:(LQModel *)model
+- (void)setModel:(LQModelProductDetail *)model
 {
     _model = model;
     
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.goodsName.text = model.product.name;
+    
+    float jingdu = model.currentCount*1.00/model.allCount;
+    
+    NSLog(@"---->%d",model.currentCount);
+    
+    self.jinDuLabel.text = [NSString stringWithFormat:@"开奖进度:%.0f%%",jingdu*100];
+    self.processView.progress = jingdu;
 }
+
 
 @end

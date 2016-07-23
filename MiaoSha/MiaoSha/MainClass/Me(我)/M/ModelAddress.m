@@ -10,4 +10,9 @@
 
 @implementation ModelAddress
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"sid":@"id"};
+}
+
 @end

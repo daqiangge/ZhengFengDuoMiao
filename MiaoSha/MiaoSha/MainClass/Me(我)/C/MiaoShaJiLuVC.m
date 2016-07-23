@@ -10,6 +10,7 @@
 #import "MiaoShaJiLu_JingXingZhongCell.h"
 #import "MiaoShaJiLu_JingXingZhongCell2.h"
 #import "MiaoShaJiLu_YiJieXiaoCell.h"
+#import "ProductDetailsVC.h"
 
 @interface MiaoShaJiLuVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -21,9 +22,40 @@
 @property (nonatomic, weak) UITableView *yiJieXiaoTableView;
 @property (nonatomic, weak) UITableView *jinXingZhongTableView;
 
+@property (nonatomic, strong) NSMutableArray *allArray;
+@property (nonatomic, strong) NSMutableArray *jinXingZhongArray;
+@property (nonatomic, strong) NSMutableArray *yiJieXiaoArray;
+
 @end
 
 @implementation MiaoShaJiLuVC
+
+- (NSMutableArray *)allArray
+{
+    if (!_allArray) {
+        _allArray = [NSMutableArray array];
+    }
+    
+    return _allArray;
+}
+
+- (NSMutableArray *)jinXingZhongArray
+{
+    if (!_jinXingZhongArray) {
+        _jinXingZhongArray = [NSMutableArray array];
+    }
+    
+    return _jinXingZhongArray;
+}
+
+- (NSMutableArray *)yiJieXiaoArray
+{
+    if (!_yiJieXiaoArray) {
+        _yiJieXiaoArray = [NSMutableArray array];
+    }
+    
+    return _yiJieXiaoArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +64,7 @@
     self.navigationItem.title = @"秒杀记录";
     
     [self drawView];
+    [self requestDataWithType:@"0"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,6 +175,26 @@
     .topSpaceToView(quanBuBtn,0)
     .bottomSpaceToView(self.view,0);
 
+    
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefersh1)];
+    jinXingZhongTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefersh2)];
+    yiJieXiaoTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefersh3)];
+//    tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefersh)];
+}
+
+- (void)headerRefersh1
+{
+    [self requestDataWithType:@"0"];
+}
+
+- (void)headerRefersh2
+{
+    [self requestDataWithType:@"1"];
+}
+
+- (void)headerRefersh3
+{
+    [self requestDataWithType:@"2"];
 }
 
 - (void)didClickQuanBu:(UIButton *)btn
@@ -162,6 +215,8 @@
     .widthIs(100)
     .heightIs(2);
     
+    [self requestDataWithType:@"0"];
+    
 }
 
 - (void)didClickJingXingZhong:(UIButton *)btn
@@ -181,6 +236,8 @@
     .topSpaceToView(btn,-2)
     .widthIs(100)
     .heightIs(2);
+    
+    [self requestDataWithType:@"1"];
 }
 
 - (void)didClickYiJieXiao:(UIButton *)btn
@@ -200,14 +257,55 @@
     .topSpaceToView(btn,-2)
     .widthIs(100)
     .heightIs(2);
+    
+    [self requestDataWithType:@"2"];
 }
 
+
+#pragma mark -
+#pragma mark ================= 网络 =================
+- (void)requestDataWithType:(NSString *)type
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setValue:type forKey:@"type"];
+    
+    [params setValue:[LQModelMember sharedMemberMySelf].sid forKey:@"userId"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/order/findOrderList" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        if ([type isEqualToString:@"0"]) {
+            self.allArray = [NSMutableArray arrayWithArray:[LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"orderList"]]];
+            [self.tableView reloadData];
+        }else if ([type isEqualToString:@"1"]){
+            self.jinXingZhongArray = [NSMutableArray arrayWithArray:[LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"orderList"]]];
+            [self.jinXingZhongTableView reloadData];
+        }else if ([type isEqualToString:@"2"]){
+            self.yiJieXiaoArray = [NSMutableArray arrayWithArray:[LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"orderList"]]];
+            [self.yiJieXiaoTableView reloadData];
+        }
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 #pragma mark -
 #pragma mark ================= <UITableViewDelegate,UITableViewDataSource> =================
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    if (tableView == self.tableView) {
+        return self.allArray.count;
+    }
+    if (tableView == self.jinXingZhongTableView) {
+        return self.jinXingZhongArray.count;
+    }
+    if (tableView == self.yiJieXiaoTableView) {
+        return self.yiJieXiaoArray.count;
+    }
+    
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -219,38 +317,90 @@
 {
     if (tableView == self.jinXingZhongTableView)
     {
+        LQModelProductDetail *model = self.jinXingZhongArray[indexPath.section];
         
-        MiaoShaJiLu_JingXingZhongCell2 *cell = [MiaoShaJiLu_JingXingZhongCell2 cellWithTableView:tableView];
-        
-        return cell;
+        if ([model.period.status isEqualToString:@"0"])
+        {
+            MiaoShaJiLu_JingXingZhongCell *cell = [MiaoShaJiLu_JingXingZhongCell cellWithTableView:tableView];
+            cell.model = model;
+            return cell;
+        }
+        else if ([model.period.status isEqualToString:@"2"])
+        {
+            MiaoShaJiLu_JingXingZhongCell2 *cell = [MiaoShaJiLu_JingXingZhongCell2 cellWithTableView:tableView];
+            cell.model = model;
+            return cell;
+        }
     }
     
     if (tableView == self.yiJieXiaoTableView)
     {
-        
         MiaoShaJiLu_YiJieXiaoCell *cell = [MiaoShaJiLu_YiJieXiaoCell cellWithTableView:tableView];
-        
+        cell.model = self.yiJieXiaoArray[indexPath.section];
         return cell;
     }
     
-    MiaoShaJiLu_JingXingZhongCell *cell = [MiaoShaJiLu_JingXingZhongCell cellWithTableView:tableView];
     
-    return cell;
+    
+    LQModelProductDetail *model = self.allArray[indexPath.section];
+    
+    if ([model.period.status isEqualToString:@"0"])
+    {
+        MiaoShaJiLu_JingXingZhongCell *cell = [MiaoShaJiLu_JingXingZhongCell cellWithTableView:tableView];
+        cell.model = model;
+        return cell;
+    }
+    else if ([model.period.status isEqualToString:@"1"])
+    {
+        MiaoShaJiLu_YiJieXiaoCell *cell = [MiaoShaJiLu_YiJieXiaoCell cellWithTableView:tableView];
+        cell.model = model;
+        return cell;
+    }
+    else
+    {
+        MiaoShaJiLu_JingXingZhongCell2 *cell = [MiaoShaJiLu_JingXingZhongCell2 cellWithTableView:tableView];
+        cell.model = model;
+        return cell;
+    }
+    
+    return [UITableViewCell new];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.jinXingZhongTableView)
     {
-        return 120;
+        LQModelProductDetail *model = self.jinXingZhongArray[indexPath.section];
+        if ([model.period.status isEqualToString:@"0"])
+        {
+            return [tableView cellHeightForIndexPath:indexPath model:[LQModelProductDetail new] keyPath:@"model" cellClass:[MiaoShaJiLu_JingXingZhongCell class] contentViewWidth:ScreenWidth];
+        }
+        else if ([model.period.status isEqualToString:@"2"])
+        {
+            return 100;
+        }
     }
     
     if (tableView == self.yiJieXiaoTableView)
     {
+        return 90;
+    }
+    
+    
+    LQModelProductDetail *model = self.allArray[indexPath.section];
+    if ([model.period.status isEqualToString:@"0"])
+    {
+        return [tableView cellHeightForIndexPath:indexPath model:[LQModelProductDetail new] keyPath:@"model" cellClass:[MiaoShaJiLu_JingXingZhongCell class] contentViewWidth:ScreenWidth];
+    }
+    else if ([model.period.status isEqualToString:@"1"])
+    {
+        return 90;
+    }
+    else
+    {
         return 100;
     }
     
-    return [tableView cellHeightForIndexPath:indexPath model:[BaseModel new] keyPath:@"model" cellClass:[MiaoShaJiLu_JingXingZhongCell class] contentViewWidth:ScreenWidth];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -261,6 +411,38 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.01;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.jinXingZhongTableView)
+    {
+        LQModelProductDetail *model = self.jinXingZhongArray[indexPath.section];
+        
+        ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+        vc.periodId = model.period.sid;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return;
+    }
+    
+    if (tableView == self.yiJieXiaoTableView)
+    {
+        LQModelProductDetail *model = self.yiJieXiaoArray[indexPath.section];
+        
+        ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+        vc.periodId = model.period.sid;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return;
+    }
+    
+    
+    LQModelProductDetail *model = self.allArray[indexPath.section];
+    
+    ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+    vc.periodId = model.period.sid;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

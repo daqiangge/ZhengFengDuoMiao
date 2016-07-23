@@ -1,18 +1,17 @@
 //
-//  LQModelAdded.m
+//  LQModelOrderDetail.m
 //  MiaoSha
 //
-//  Created by liqiang on 16/7/12.
+//  Created by liqiang on 16/7/19.
 //  Copyright © 2016年 LiQiang. All rights reserved.
 //
 
-#import "LQModelAdded.h"
+#import "LQModelOrderDetail.h"
 
-@implementation LQModelAdded
+@implementation LQModelOrderDetail
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return @{@"sid":@"id"};
 }
-
 @end

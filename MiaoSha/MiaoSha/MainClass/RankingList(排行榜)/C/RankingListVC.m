@@ -15,18 +15,48 @@
 @property (nonatomic, weak) UIButton *chongzhiWangBtn;
 @property (nonatomic, weak) UIButton *miaoshaWangBtn;
 @property (nonatomic, weak) UIView *lineView;
+
 @property (nonatomic, weak) UITableView *tableView1;//充值
 @property (nonatomic, weak) UITableView *tableView2;//秒杀
+
+@property (nonatomic, strong) NSMutableArray *chongzhiWangDataArray;
+@property (nonatomic, strong) NSMutableArray *miaoshaWangDataArray;
 
 @end
 
 @implementation RankingListVC
+
+- (NSMutableArray *)chongzhiWangDataArray
+{
+    if (!_chongzhiWangDataArray) {
+        _chongzhiWangDataArray = [NSMutableArray array];
+    }
+    
+    return _chongzhiWangDataArray;
+}
+
+- (NSMutableArray *)miaoshaWangDataArray
+{
+    if (!_miaoshaWangDataArray) {
+        _miaoshaWangDataArray = [NSMutableArray array];
+    }
+    
+    return _miaoshaWangDataArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self drawView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self requestMiaoShaWangData];
+    [self requestChongZhiWangData];
 }
 
 - (void)drawView
@@ -137,10 +167,53 @@
 }
 
 #pragma mark -
+#pragma mark ================= 网络 =================
+- (void)requestChongZhiWangData
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"2" forKey:@"type"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/sort/findKing" parameters:params showTips:nil success:^(id responseObject) {
+        
+        self.chongzhiWangDataArray = [NSMutableArray arrayWithArray:[LQModelSort mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"sortList"]]];
+        [self.tableView1 reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)requestMiaoShaWangData
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"1" forKey:@"type"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/sort/findKing" parameters:params showTips:nil success:^(id responseObject) {
+        
+        self.miaoshaWangDataArray = [NSMutableArray arrayWithArray:[LQModelSort mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"sortList"]]];
+        [self.tableView2 reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark -
 #pragma mark ================= <UITableViewDelegate,UITableViewDataSource> =================
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    if (tableView == self.tableView1) {
+        return self.chongzhiWangDataArray.count;
+    }
+    if (tableView == self.tableView2) {
+        return self.miaoshaWangDataArray.count;
+    }
+    
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -152,9 +225,13 @@
 {
     if (tableView == self.tableView2)
     {
+        LQModelSort *model = self.miaoshaWangDataArray[indexPath.section];
+        
         RankingListCell2 *cell = [RankingListCell2 cellWithTableView:tableView];
         
         cell.numlabel.text = [NSString stringWithFormat:@"%ld",indexPath.section +1];
+        [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.user.appPhoto)] placeholderImage:[UIImage imageNamed:@"PHB_userImg001"]];
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@秒杀了%@次",model.user.name,model.seckillingCount];
         
         switch (indexPath.section)
         {
@@ -184,9 +261,13 @@
         return cell;
     }
     
+    LQModelSort *model = self.chongzhiWangDataArray[indexPath.section];
+    
     RankingListCell *cell = [RankingListCell cellWithTableView:tableView];
     
     cell.numlabel.text = [NSString stringWithFormat:@"%ld",indexPath.section +1];
+    [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.user.appPhoto)] placeholderImage:[UIImage imageNamed:@"PHB_userImg001"]];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@充值了%@元",model.user.name,model.amount];
     
     switch (indexPath.section)
     {

@@ -10,7 +10,7 @@
 
 @interface MiaoShaJiLu_JingXingZhongCell : UITableViewCell
 
-@property (nonatomic, strong) BaseModel *model;
+@property (nonatomic, strong) LQModelProductDetail *model;
 
 + (MiaoShaJiLu_JingXingZhongCell *)cellWithTableView:(UITableView *)tableView;
 

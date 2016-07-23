@@ -98,9 +98,9 @@
 - (void)setModel:(LQModelProductDetail *)model
 {
     _model = model;
-    
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.added.product.appPath)] placeholderImage:[UIImage imageNamed:@"default"]];
-    self.goodsName.text = model.added.product.name;
+    NSLog(@"--->%@",URLSTR(model.product.image));
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.goodsName.text = model.product.name;
     self.zhongJiangNameLabel.text = model.user.name;
 }
 

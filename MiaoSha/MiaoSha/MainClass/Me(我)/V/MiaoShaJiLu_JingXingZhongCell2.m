@@ -63,7 +63,8 @@
     UILabel *priceLabel = [[UILabel alloc] init];
     priceLabel.font = [UIFont systemFontOfSize:10];
     priceLabel.textColor = [UIColor lightGrayColor];
-    priceLabel.text = @"￥999999.9";
+    priceLabel.text = @"";
+    priceLabel.hidden = YES;
     [self.contentView addSubview:priceLabel];
     self.priceLabel = priceLabel;
     
@@ -95,8 +96,8 @@
     iconImage.sd_layout
     .leftSpaceToView(self.contentView,10)
     .centerYEqualToView(self.contentView)
-    .widthIs(75)
-    .heightIs(75);
+    .widthIs(60)
+    .heightIs(60);
     
     nameLabel.sd_layout
     .topSpaceToView(self.contentView,10)
@@ -138,6 +139,32 @@
     self.timeLabel.startValue = 1468149999;
     [self.timeLabel updateApperance];
     [self.timeLabel start];
+}
+
+- (void)setModel:(LQModelProductDetail *)model
+{
+    _model = model;
+    
+    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.period.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.nameLabel.text = model.period.product.name;
+    self.renCiLabel.text = [NSString stringWithFormat:@"本次参与：%d人次",model.count];
+    
+    [self.timeLabel reset];
+    
+    NSDate *nowDate = [NSDate date];
+    long nowTimeInterval = [NSDate timeIntervalWithDate:nowDate]*1000;
+    
+    long time = model.period.lotteryTimeLong - nowTimeInterval;
+    
+    if (time < 0 ) {
+        
+    }else{
+        self.timeLabel.startValue = time;
+        [self.timeLabel updateApperance];
+        [self.timeLabel start];
+    }
+    
+    
 }
 
 @end

@@ -61,7 +61,7 @@
 {
     _model = model;
     
-    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.added.product.appPath)] placeholderImage:[UIImage imageNamed:@"default"]];
+    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
     
 }
 

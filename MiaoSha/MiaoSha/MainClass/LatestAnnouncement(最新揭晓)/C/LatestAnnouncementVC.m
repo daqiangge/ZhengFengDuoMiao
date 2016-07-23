@@ -8,10 +8,12 @@
 
 #import "LatestAnnouncementVC.h"
 #import "LatestAnnouncementCell.h"
+#import "ProductDetailsVC.h"
 
 @interface LatestAnnouncementVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -38,42 +40,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self requestZuiXinJieXiao];
+}
+
 - (void)drawView
 {
-    NSDate *nowDate = [NSDate date];
-    long nowTimeInterval = [NSDate timeIntervalWithDate:nowDate];
-    ModelLatestAnnouncement *model = [[ModelLatestAnnouncement alloc] init];
-    model.state = 1;
-    model.time = nowTimeInterval + arc4random()%1000;
-    
-    [self.dataArray addObject:model];
-    ModelLatestAnnouncement *model3 = [[ModelLatestAnnouncement alloc] init];
-    model3.state = 1;
-    model3.time = nowTimeInterval + arc4random()%1000;
-    [self.dataArray addObject:model3];
-    ModelLatestAnnouncement *model4 = [[ModelLatestAnnouncement alloc] init];
-    model4.state = 1;
-    model4.time = nowTimeInterval + arc4random()%1000;
-    [self.dataArray addObject:model4];
-    
-    ModelLatestAnnouncement *model2 = [[ModelLatestAnnouncement alloc] init];
-    model2.state = 0;
-    model.time = nowTimeInterval + arc4random()%1000;
-    [self.dataArray addObject:model2];
-    [self.dataArray addObject:model2];
-    [self.dataArray addObject:model2];
-    [self.dataArray addObject:model2];
-    [self.dataArray addObject:model2];
-    
-    
-    
-    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
     //    tableView.tableFooterView = [self drawFooterView];
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     tableView.sd_layout
     .leftSpaceToView(self.view,0)
@@ -82,6 +64,34 @@
     .bottomSpaceToView(self.view,0);
 }
 
+#pragma mark -
+#pragma mark ================= 网络 =================
+/**
+ *  获取最新揭晓
+ */
+- (void)requestZuiXinJieXiao
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"0" forKey:@"isMain"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/period/findPublishPeriod" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        NSArray *array = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"periodList"]];
+        
+        [self.dataArray removeAllObjects];
+        for (LQModelProductDetail *model in array)
+        {
+            [self.dataArray addObject:model];
+        }
+        
+        [self.tableView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 #pragma mark -
 #pragma mark ================= <UITableViewDelegate,UITableViewDataSource> =================
@@ -104,7 +114,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 109;
+    return 90;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LQModelProductDetail *model = self.dataArray[indexPath.row];
+    
+    ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.periodId = model.sid;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

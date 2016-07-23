@@ -22,5 +22,7 @@
 @property (nonatomic, copy) NSString *ip;
 @property (nonatomic, copy) NSString *isSue;
 @property (nonatomic, copy) NSString *luckNumber;
+@property (nonatomic, copy) NSString *showTime;
+@property (nonatomic, copy) NSString *time;
 
 @end

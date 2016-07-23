@@ -176,12 +176,37 @@
 {
     _model = model;
     
-    [self.personIconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.added.user.appPhoto)] placeholderImage:[UIImage imageNamed:@"awards_useImg_001"]];
-    self.nameLabel.text = model.added.user.name;
-    self.IdLabel.text = [NSString stringWithFormat:@"用户ID：%@（河北衡水）",model.added.user.ip];
-    self.qiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.added.user.isSue];
-//    self.canYuRenCiLabel.text = [NSString stringWithFormat:@"本期参与：%@人次"];
-    self.xinYunHaoLabel.text = [NSString stringWithFormat:@"幸运号：%@",model.added.user.luckNumber];
+    if ([self.model.status isEqualToString:@"0"])
+    {
+        [self.personIconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.lastUser.appPhoto)] placeholderImage:[UIImage imageNamed:@"awards_useImg_001"]];
+        self.nameLabel.text = model.lastUser.name;
+        self.IdLabel.text = [NSString stringWithFormat:@"用户ID：%@",model.lastIp];
+        self.qiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.lastNumber];
+        self.canYuRenCiLabel.text = [NSString stringWithFormat:@"本期参与：%d人次",model.lastUserCount];
+        self.xinYunHaoLabel.text = [NSString stringWithFormat:@"幸运号：%@",model.lastOrderDetail.number];
+    }
+    
+    if ([self.model.status isEqualToString:@"1"])
+    {
+        [self.personIconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.user.appPhoto)] placeholderImage:[UIImage imageNamed:@"awards_useImg_001"]];
+        self.nameLabel.text = model.user.name;
+        self.IdLabel.text = [NSString stringWithFormat:@"用户ID：%@",model.ip];
+        self.qiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.number];
+        self.canYuRenCiLabel.text = [NSString stringWithFormat:@"本期参与：%d人次",model.userCount];
+        self.xinYunHaoLabel.text = [NSString stringWithFormat:@"幸运号：%@",model.orderDetail.number];
+        
+    }
+    
+    if ([self.model.status isEqualToString:@"2"])
+    {
+        [self.personIconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.lastUser.appPhoto)] placeholderImage:[UIImage imageNamed:@"awards_useImg_001"]];
+        self.nameLabel.text = model.lastUser.name;
+        self.IdLabel.text = [NSString stringWithFormat:@"用户ID：%@",model.lastIp];
+        self.qiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.lastNumber];
+        self.canYuRenCiLabel.text = [NSString stringWithFormat:@"本期参与：%d人次",model.lastUserCount];
+        self.xinYunHaoLabel.text = [NSString stringWithFormat:@"幸运号：%@",model.lastOrderDetail.number];
+    }
+    
 }
 
 @end

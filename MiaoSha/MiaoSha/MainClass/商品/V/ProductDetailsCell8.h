@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ProductDetailsCell8 : UITableViewCell
-@property (nonatomic, strong) LQModelProductDetail *model;
+
+@property (nonatomic, strong) LQModelBuyUser *model;
+
 + (ProductDetailsCell8 *)cellWithTableView:(UITableView *)tableView;
 
 @end

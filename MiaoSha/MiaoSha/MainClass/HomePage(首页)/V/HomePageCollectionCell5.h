@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LQModel.h"
 
 @interface HomePageCollectionCell5 : UICollectionViewCell
 
-@property (nonatomic, strong) LQModel *model;
+@property (nonatomic, strong) LQModelProductDetail *model;
 
 @end

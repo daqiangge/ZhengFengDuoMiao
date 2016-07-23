@@ -14,4 +14,15 @@
 {
     return @{@"sid":@"id"};
 }
+
+- (NSString *)address
+{
+    if (!_address)
+    {
+        return @"";
+    }
+    
+    return _address;
+}
+
 @end

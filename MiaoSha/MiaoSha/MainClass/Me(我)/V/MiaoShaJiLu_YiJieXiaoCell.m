@@ -88,14 +88,15 @@
     
     UIImageView *personIconImageView = [[UIImageView alloc] init];
     personIconImageView.image = [UIImage imageNamed:@"awards_useImg_001"];
+    personIconImageView.hidden = YES;
     [jieXiaoView addSubview:personIconImageView];
     self.personIconImageView = personIconImageView;
     
     iconImageView.sd_layout
     .leftSpaceToView(self.contentView,10)
     .centerYEqualToView(self.contentView)
-    .widthIs(75)
-    .heightIs(75);
+    .widthIs(60)
+    .heightIs(60);
     
     nameLabel.sd_layout
     .topSpaceToView(self.contentView,10)
@@ -135,6 +136,17 @@
     .autoHeightRatio(0);
     
     [self addUnderlineWithLeftMargin:0];
+}
+
+- (void)setModel:(LQModelProductDetail *)model
+{
+    _model = model;
+    
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.period.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.nameLabel.text = model.period.product.name;
+    self.zhongJiangNameLabel.text = [NSString stringWithFormat:@"中奖者：%@",model.user.name];
+    self.renCiLabel.text = [NSString stringWithFormat:@"本期夺宝：%d人次",model.count];
+    self.dateLabel.text = [NSString stringWithFormat:@"揭晓时间：%@",model.updateDate];
 }
 
 @end

@@ -14,6 +14,8 @@
 @property (nonatomic, weak) UILabel *numlabel ;
 
 @property (nonatomic, copy) NSString *imageViewName;
+@property (nonatomic, weak) UIImageView *iconImageView;
+@property (nonatomic, weak) UILabel *nameLabel;
 
 + (RankingListCell *)cellWithTableView:(UITableView *)tableView;
 

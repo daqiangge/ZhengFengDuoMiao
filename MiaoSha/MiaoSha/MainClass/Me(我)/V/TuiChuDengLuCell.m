@@ -45,6 +45,7 @@
     btn.backgroundColor = [UIColor colorWithRed:0.992 green:0.824 blue:0.188 alpha:1.00];
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     btn.layer.cornerRadius = 3;
+    btn.userInteractionEnabled = NO;
     [self.contentView addSubview:btn];
     
     btn.sd_layout

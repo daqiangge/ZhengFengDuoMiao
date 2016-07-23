@@ -37,8 +37,8 @@
     if (cell == nil)
     {
         cell = [[ProductDetailsCell3 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:idenifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -103,10 +103,10 @@
 {
     _model = model;
     
-    self.shangPingQiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.added.issue];
-    self.zongRenCiLabel.text = [NSString stringWithFormat:@"总需%@人次",model.added.time];
-    self.shengYuRenCiLabel.text = [NSString stringWithFormat:@"剩余%d人次",[model.added.time intValue] - [model.added.nowTime intValue]];
-    self.processView.progress = [model.added.nowTime intValue]/[model.added.time intValue];
+    self.shangPingQiShuLabel.text = [NSString stringWithFormat:@"商品期数：%@",model.number];
+    self.zongRenCiLabel.text = [NSString stringWithFormat:@"总需%d人次",model.allCount];
+    self.shengYuRenCiLabel.text = [NSString stringWithFormat:@"剩余%d人次",model.allCount - model.currentCount];
+    self.processView.progress = model.currentCount*1.00/model.allCount;
     
     [self setupAutoHeightWithBottomView:self.zongRenCiLabel bottomMargin:10];
 }

@@ -47,6 +47,7 @@
     btn.layer.borderColor = [UIColor grayColor].CGColor;
     btn.layer.borderWidth = 1;
     btn.layer.cornerRadius = 3;
+    btn.userInteractionEnabled = NO;
     [self.contentView addSubview:btn];
     
     btn.sd_layout

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MiaoShaJiLu_JingXingZhongCell2 : UITableViewCell
+@property (nonatomic, strong) LQModelProductDetail *model;
 
 + (MiaoShaJiLu_JingXingZhongCell2 *)cellWithTableView:(UITableView *)tableView;
 

@@ -10,6 +10,8 @@
 
 @interface ZhongJiangJiLuCell : UITableViewCell
 
+@property (nonatomic, strong) LQModelProductDetail *model;
+
 + (ZhongJiangJiLuCell *)cellWithTableView:(UITableView *)tableView;
 
 @end

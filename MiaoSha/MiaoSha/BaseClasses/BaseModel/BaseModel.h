@@ -16,4 +16,6 @@
 
 @property (nonatomic, copy) NSString *message;
 
++ (NSString *)createAppKey:(NSDictionary *)dictionary;
+
 @end

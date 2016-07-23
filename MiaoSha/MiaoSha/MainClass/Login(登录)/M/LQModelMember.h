@@ -17,7 +17,9 @@
 @property (nonatomic, copy) NSString *mobile;
 @property (nonatomic, copy) NSString *userType;
 @property (nonatomic, copy) NSString *appPhoto;
+@property (nonatomic, copy) NSString *userKey;
 
 + (LQModelMember *)sharedMemberMySelf;
+- (void)logOut;
 
 @end

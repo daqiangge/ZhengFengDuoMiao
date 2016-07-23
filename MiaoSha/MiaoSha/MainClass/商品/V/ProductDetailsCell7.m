@@ -74,6 +74,7 @@
 - (void)setModel:(LQModelProductDetail *)model
 {
     _model = model;
+    self.label2.text = [NSString stringWithFormat:@"（%@ 开始）",model.updateDate];
 }
 
 @end

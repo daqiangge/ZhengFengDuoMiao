@@ -32,6 +32,9 @@
 @property (nonatomic, strong) NSMutableArray *modelPictureArray;
 @property (nonatomic, strong) NSMutableArray *modelLunBoZhongJiangArray;
 @property (nonatomic, strong) NSMutableArray *modelZuiXingJieXiaoArray;
+//@property (nonatomic, strong) NSMutableArray *modelFengMiaoQuArray;
+//@property (nonatomic, strong) NSMutableArray *modelKuangZhanQuArray;
+//@property (nonatomic, strong) NSMutableArray *modelYuanMengQuArray;
 
 @property (nonatomic, strong) NSMutableArray *fengMiaoQuArray;
 @property (nonatomic, strong) NSMutableArray *kuangZhanQuArray;
@@ -41,6 +44,7 @@
 @end
 
 @implementation HomePageVC
+
 
 - (NSMutableArray *)modelZuiXingJieXiaoArray
 {
@@ -125,6 +129,7 @@
     [self requestLunBoTu];
     [self requestLunBoZhongJiang];
     [self requestZuiXinJieXiao];
+    [self requestFengMiaoQu];
 }
 
 - (void)drawView
@@ -205,17 +210,17 @@
         {
             case 1:
             {
-                return 4;
+                return self.fengMiaoQuArray.count + 1;
             }
                 break;
             case 2:
             {
-                return 8;
+                return self.kuangZhanQuArray.count + 1;
             }
                 break;
             case 3:
             {
-                return 13;
+                return self.yuanMengQuArray.count + 1;
             }
                 break;
                 
@@ -272,6 +277,29 @@
             return cell;
         }else{
             HomePageCollectionCell5 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomePageCollectionCell5" forIndexPath:indexPath];
+            
+            switch (self.seleIndex)
+            {
+                case 1:
+                {
+                    cell.model = self.fengMiaoQuArray[indexPath.row - 1];
+                }
+                    break;
+                case 2:
+                {
+                    cell.model = self.kuangZhanQuArray[indexPath.row - 1];
+                }
+                    break;
+                case 3:
+                {
+                    cell.model = self.yuanMengQuArray[indexPath.row - 1];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+
             return cell;
         }
     }
@@ -380,7 +408,7 @@
             LQModelProductDetail *model = self.modelZuiXingJieXiaoArray[indexPath.row -1];
             
             ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
-            vc.addedId = model.added.sid;
+            vc.periodId = model.sid;
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -389,8 +417,32 @@
     {
         if (indexPath.row != 0)
         {
+            LQModelProductDetail *model;
+            switch (self.seleIndex)
+            {
+                case 1:
+                {
+                    model = self.fengMiaoQuArray[indexPath.row - 1];
+                }
+                    break;
+                case 2:
+                {
+                    model = self.kuangZhanQuArray[indexPath.row - 1];
+                }
+                    break;
+                case 3:
+                {
+                    model = self.yuanMengQuArray[indexPath.row - 1];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             ProductDetailsVC *vc = [[ProductDetailsVC alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
+            vc.periodId = model.sid;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
@@ -432,9 +484,9 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:@"5" forKey:@"count"];
     
-    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/added/findNewPublish" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/message/findMessageList" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
         
-        NSArray *array = [LQModelLunBoZhongJiang mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"messageList"]];
+        NSArray *array = [LQModelLunBoZhongJiang mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"indexMessageList"]];
         
         [self.modelLunBoZhongJiangArray removeAllObjects];
         for (LQModelLunBoZhongJiang *model in array)
@@ -459,9 +511,9 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:@"1" forKey:@"isMain"];
     
-    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/record/findPublish" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/period/findPublishPeriod" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
         
-        NSArray *array = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"recordList"]];
+        NSArray *array = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"periodList"]];
 
         [self.modelZuiXingJieXiaoArray removeAllObjects];
         for (LQModelProductDetail *model in array)
@@ -478,21 +530,43 @@
     }];
 }
 
-#pragma mark -
-#pragma mark ================= <UITableViewDelegate,UITableViewDataSource> =================
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+/**
+ *  获取秒杀商品
+ */
+- (void)requestFengMiaoQu
 {
-    return 1;
-}
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"1" forKey:@"type"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/period/findPeriodList" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [UITableViewCell new];
+        NSArray *array1 = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"periodList"]];
+        NSArray *array2 = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"crazeList"]];
+        NSArray *array3 = [LQModelProductDetail mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"dreamList"]];
+        
+        [self.fengMiaoQuArray removeAllObjects];
+        for (LQModelProductDetail *model in array1)
+        {
+            [self.fengMiaoQuArray addObject:model];
+        }
+        [self.kuangZhanQuArray removeAllObjects];
+        for (LQModelProductDetail *model in array2)
+        {
+            [self.kuangZhanQuArray addObject:model];
+        }
+        [self.yuanMengQuArray removeAllObjects];
+        for (LQModelProductDetail *model in array3)
+        {
+            [self.yuanMengQuArray addObject:model];
+        }
+        
+        [self.collectionView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

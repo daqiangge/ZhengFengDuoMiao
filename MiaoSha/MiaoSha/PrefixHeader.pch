@@ -60,7 +60,12 @@
 #import "LQModelMember.h"
 #import "LQModelUser.h"
 #import "LQModelProduct.h"
-#import "LQModelAdded.h"
 #import "LQModelProductDetail.h"
+#import "LQModelOrderDetail.h"
+#import "LQModelBuyUser.h"
+#import "LQModelShare.h"
+#import "LQModelSort.h"
+#import "ZPEncrypt.h"
+#import "LQModelMiaoShaJiLu.h"
 
 #endif

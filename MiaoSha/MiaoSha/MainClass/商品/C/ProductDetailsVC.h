@@ -11,6 +11,6 @@
 @interface ProductDetailsVC : ChildBaseViewController
 
 
-@property (nonatomic, copy) NSString *addedId;
+@property (nonatomic, copy) NSString *periodId;
 
 @end

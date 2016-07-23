@@ -62,7 +62,7 @@
 {
     _model = model;
     
-    self.label.text = model.added.product.name;
+    self.label.text = model.product.name;
     [self setupAutoHeightWithBottomView:self.label bottomMargin:5];
 }
 

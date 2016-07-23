@@ -122,7 +122,7 @@
     .leftSpaceToView(nameLabel,10)
     .topEqualToView(iconImageView)
     .heightRatioToView(iconImageView,1);
-    [dateLabel setSingleLineAutoResizeWithMaxWidth:80];
+    [dateLabel setSingleLineAutoResizeWithMaxWidth:150];
     
     joinNumLabel.sd_layout
     .rightSpaceToView(self.contentView,10)
@@ -155,35 +155,35 @@
     
 }
 
-- (void)setModel:(ModelOrder *)model
+- (void)setModel:(LQModelShare *)model
 {
     _model = model;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"PHB_userImg001"]];
-    self.nameLabel.text = model.name;
-    self.dateLabel.text = model.date;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR(model.user.appPhoto)] placeholderImage:[UIImage imageNamed:@"PHB_userImg001"]];
+    self.nameLabel.text = model.user.name;
+    self.dateLabel.text = model.updateDate;
     
     NSMutableAttributedString *joinNumAtt = [[NSMutableAttributedString alloc] initWithString:@"参与" attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:self.dateLabel.textColor}];
-    [joinNumAtt appendAttributedString:[[NSMutableAttributedString alloc] initWithString:model.joinNum attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:[UIColor redColor]}]];
+    [joinNumAtt appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d",model.period.userCount] attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:[UIColor redColor]}]];
     [joinNumAtt appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"人次" attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:self.dateLabel.textColor}]];
     self.joinNumLabel.attributedText = joinNumAtt;
     
     [self.contentLabel sizeToFit];
-    self.contentLabel.text = model.content;
-    self.picContainerView.picPathStringsArray = model.picArray;
+    self.contentLabel.text = model.sdescription;
+    self.picContainerView.picPathStringsArray = model.imageList;
     
     CGFloat picContainerTopMargin = 0;
-    if (model.picArray.count)
+    if (model.imageList.count)
     {
         picContainerTopMargin = 10;
     }
     self.picContainerView.sd_layout
     .topSpaceToView(self.contentLabel, picContainerTopMargin);
     
-    self.qiShuLabel.text = [NSString stringWithFormat:@"[商品期数]：%@",model.qishu];
+    self.qiShuLabel.text = [NSString stringWithFormat:@"[商品期数]：%@",model.period.number];
     
     NSMutableAttributedString *shangPingNameAtt = [[NSMutableAttributedString alloc] initWithString:@"[商品名称]：" attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:self.dateLabel.textColor}];
-    [shangPingNameAtt appendAttributedString:[[NSMutableAttributedString alloc] initWithString:model.shangpingName attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:[UIColor blackColor]}]];
+    [shangPingNameAtt appendAttributedString:[[NSMutableAttributedString alloc] initWithString:model.period.product.name attributes:@{NSFontAttributeName:self.dateLabel.font,NSForegroundColorAttributeName:[UIColor blackColor]}]];
     self.shangPingNameLabel.attributedText = shangPingNameAtt;
     
     [self setupAutoHeightWithBottomView:self.shangPingNameLabel bottomMargin:10];

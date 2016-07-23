@@ -69,7 +69,8 @@
     UILabel *priceLabel = [[UILabel alloc] init];
     priceLabel.font = [UIFont systemFontOfSize:10];
     priceLabel.textColor = [UIColor lightGrayColor];
-    priceLabel.text = @"￥999999.9";
+    priceLabel.hidden = YES;
+    priceLabel.text = @"123";
     [self.contentView addSubview:priceLabel];
     self.priceLabel = priceLabel;
     
@@ -113,20 +114,21 @@
     UILabel *dateLabel = [[UILabel alloc] init];
     dateLabel.font = [UIFont systemFontOfSize:10];
     dateLabel.textColor = [UIColor blackColor];
-    dateLabel.text = @"揭晓时间：1分钟前";
+    dateLabel.text = @"揭晓时间：";
     [jieXiaoView addSubview:dateLabel];
     self.dateLabel = dateLabel;
     
     UIImageView *personIconImageView = [[UIImageView alloc] init];
     personIconImageView.image = [UIImage imageNamed:@"awards_useImg_001"];
+    personIconImageView.hidden = YES;
     [jieXiaoView addSubview:personIconImageView];
     self.personIconImageView = personIconImageView;
     
     iconImageView.sd_layout
     .leftSpaceToView(self.contentView,10)
     .centerYEqualToView(self.contentView)
-    .widthIs(75)
-    .heightIs(75);
+    .widthIs(60)
+    .heightIs(60);
     
     nameLabel.sd_layout
     .topSpaceToView(self.contentView,10)
@@ -191,21 +193,24 @@
     
 }
 
-- (void)setModel:(ModelLatestAnnouncement *)model
+- (void)setModel:(LQModelProductDetail *)model
 {
     _model = model;
     
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:URLSTR([model.product.imageList firstObject])] placeholderImage:[UIImage imageNamed:@"default"]];
+    self.nameLabel.text = model.product.name;
+    
     [self.timeLabel reset];
     
-    if (model .state)
+    if ([model.status isEqualToString:@"2"])
     {
         self.timeView.hidden = NO;
         self.jieXiaoView.hidden = YES;
         
         NSDate *nowDate = [NSDate date];
-        long nowTimeInterval = [NSDate timeIntervalWithDate:nowDate];
+        long nowTimeInterval = [NSDate timeIntervalWithDate:nowDate]*1000;
         
-        long time = (model.time - nowTimeInterval)*1000;
+        long time = model.lotteryTimeLong - nowTimeInterval;
         
         if (time < 0 ) {
             
@@ -219,6 +224,10 @@
         self.timeView.hidden = YES;
         self.jieXiaoView.hidden = NO;
         [self.timeLabel stop];
+        
+        self.zhongJiangNameLabel.text = model.user.name;
+        self.renCiLabel.text = [NSString stringWithFormat:@"本期夺宝：%d人次",model.userCount];
+        self.dateLabel.text = [NSString stringWithFormat:@"揭晓时间：%@",model.lotteryTime];
     }
 }
 

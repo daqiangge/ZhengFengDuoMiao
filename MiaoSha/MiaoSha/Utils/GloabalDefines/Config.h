@@ -18,8 +18,8 @@
 //#define AliPayCallBack             @"http://121.42.194.54:8123/ldzprj/alipayCourseSuccess.action";
 //#define DELEGATE_URL               @"http://121.42.194.54:8123/protocol.html"
 
-#define SERVER_URL                 @"http://192.168.1.116:8080/seckilling"
-//#define SERVER_URL                 @"http://121.41.129.31:80/seckilling"
+//#define SERVER_URL                 @"http://192.168.1.120:8080/seckilling"
+#define SERVER_URL                 @"http://121.41.129.31:80/seckilling"
 #define URLSTR(urlStr)             [NSString stringWithFormat:@"%@%@",SERVER_URL,urlStr]
 
 #define WeiXinCallBack             @"http://121.42.194.54:8788/ldzprj/wxpayCourseSuccess.action";

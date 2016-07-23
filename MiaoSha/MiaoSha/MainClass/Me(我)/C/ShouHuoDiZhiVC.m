@@ -15,6 +15,7 @@
 @interface ShouHuoDiZhiVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -35,19 +36,18 @@
     
     self.navigationItem.title = @"收货地址";
     
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
-    [self.dataArray addObject:[[ModelAddress alloc] init]];
     
     UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"管理" style:UIBarButtonItemStylePlain target:self action:@selector(GuanLi)];
     self.navigationItem.rightBarButtonItem = rightBarBtn;
     
     [self drawView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +63,7 @@
     tableView.dataSource = self;
     //    tableView.tableFooterView = [self drawFooterView];
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     tableView.sd_layout
     .leftSpaceToView(self.view,0)
@@ -78,6 +79,25 @@
 {
     GuanLiShouHuoDiZhiVC *vc = [[GuanLiShouHuoDiZhiVC alloc] init];
     [self.navigationController pushViewController:vc animated:NO];
+}
+
+#pragma mark -
+#pragma mark ================= 网络 =================
+- (void)requestData
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:[LQModelMember sharedMemberMySelf].sid forKey:@"userId"];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/address/getAddressList" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        self.dataArray = [NSMutableArray arrayWithArray:[ModelAddress mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"prdAddressList"]]];
+        [self.tableView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark -

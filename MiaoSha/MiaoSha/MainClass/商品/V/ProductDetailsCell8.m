@@ -78,18 +78,18 @@
     [self addUnderlineWithLeftMargin:0];
 }
 
-- (void)setModel:(LQModelProductDetail *)model
+- (void)setModel:(LQModelBuyUser *)model
 {
     _model = model;
     
-    NSMutableAttributedString *att1 = [[NSMutableAttributedString alloc] initWithString:@"张三" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor colorWithRed:0.318 green:0.867 blue:0.878 alpha:1.00]}];
-    [att1 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"（江苏无锡IP:111:111:111:111）" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor blackColor]}]];
+    NSMutableAttributedString *att1 = [[NSMutableAttributedString alloc] initWithString:model.user.name attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor colorWithRed:0.318 green:0.867 blue:0.878 alpha:1.00]}];
+    [att1 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"（IP:%@）",model.ip] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor blackColor]}]];
     self.label1.attributedText = att1;
     
     NSMutableAttributedString *att2 = [[NSMutableAttributedString alloc] initWithString:@"参与了" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor blackColor]}];
-    [att2 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"20" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor redColor]}]];
+    [att2 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:model.count attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor redColor]}]];
     [att2 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"人次" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor blackColor]}]];
-    [att2 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"  2014-14-14 11:11:11" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}]];
+    [att2 appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"  %@",model.updateDate] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}]];
     self.label2.attributedText = att2;
 }
 

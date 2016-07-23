@@ -12,6 +12,7 @@
 @interface ShowOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -35,6 +36,12 @@
     [self drawView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self requestData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -42,40 +49,13 @@
 
 - (void)drawView
 {
-    
-    ModelOrder *model = [[ModelOrder alloc] init];
-    model.name = @"王先生";
-    model.date = @"2016-09-09";
-    model.joinNum = @"333";
-    model.content = @"飒飒大师大师的说大声大声大声大声道撒飒大声大声道撒大声大声道撒大声大声道撒大声大声道撒大声大声道撒飒大师的";
-    model.picArray = @[@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg",@"http://ww2.sinaimg.cn/mw690/006gEoYogw1f4thgwt71jj30qo140wl8.jpg"];
-//    model.picArray = @[@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg",@"pic0.jpg"];
-    model.qishu = @"20180909";
-    model.shangpingName = @"保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷保时捷";
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    [self.dataArray addObject:model];
-    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
     //    tableView.tableFooterView = [self drawFooterView];
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     tableView.sd_layout
     .leftSpaceToView(self.view,0)
@@ -83,6 +63,24 @@
     .topSpaceToView(self.view,0)
     .bottomSpaceToView(self.view,0);
     
+}
+
+#pragma mark -
+#pragma mark ================= 网络 =================
+- (void)requestData
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [[LQHTTPSessionManager sharedManager] LQPost:@"/app/prd/share/findShareList" parameters:params showTips:@"正在加载.." success:^(id responseObject) {
+        
+        self.dataArray = [NSMutableArray arrayWithArray:[LQModelShare mj_objectArrayWithKeyValuesArray:[responseObject valueForKey:@"shareList"]]];
+        [self.tableView reloadData];
+        
+    } successBackfailError:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 

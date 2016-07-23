@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ModelOrder.h"
 
 @interface ShowOrderCell : UITableViewCell
 
-@property (nonatomic, strong) ModelOrder *model;
+@property (nonatomic, strong) LQModelShare *model;
 
 + (ShowOrderCell *)cellWithTableView:(UITableView *)tableView;
 

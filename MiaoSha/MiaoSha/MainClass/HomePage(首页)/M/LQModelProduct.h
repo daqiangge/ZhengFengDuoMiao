@@ -11,13 +11,12 @@
 @interface LQModelProduct : NSObject
 
 @property (nonatomic, copy) NSString *sid;
-@property (nonatomic, copy) NSString *remarks;
-@property (nonatomic, copy) NSString *createDate;
-@property (nonatomic, copy) NSString *updateDate;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *price;
-@property (nonatomic, copy) NSString *apppicturedesc;
-@property (nonatomic, copy) NSString *isrecommended;
-@property (nonatomic, copy) NSString *appPath;
+@property (nonatomic, assign) int price;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *leastCount;
+@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *remarks;
+@property (nonatomic, strong) NSArray *imageList;
 
 @end
